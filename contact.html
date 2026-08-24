@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Tutoria</title>
+<meta name="description" content="Get in touch with Tutoria — WhatsApp, phone or the enquiry form. Home tutors across West Bengal.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="Tutoria logo">
+      <span>Tutoria</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="join-as-tutor.html">Join as Tutor</a>
+      <a href="contact.html" class="active">Contact</a>
+      <a href="review.html">Leave a Review</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#" class="btn btn-whatsapp btn-lg" data-wa>
+        <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.67 4.68 1.83 6.61L3 29l7.06-2.28a12.44 12.44 0 0 0 5.94 1.52h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3Zm0 22.6h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.22-4.19 1.35 1.37-4.08-.25-.42a10.36 10.36 0 0 1-1.6-5.5c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.35 10.35 0 0 1 3.05 7.37c0 5.75-4.69 10.43-10.5 10.43Zm5.72-7.8c-.31-.16-1.85-.91-2.14-1.02-.29-.1-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.23-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.19.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37Z"/></svg>
+        WhatsApp Us
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:70px;">
+  <div class="container" style="grid-template-columns:1fr;">
+    <div class="hero-copy" style="max-width:640px;">
+      <p class="eyebrow hero-eyebrow">Contact</p>
+      <h1>Let's talk about your child's tuition.</h1>
+      <p class="lead">WhatsApp is the fastest way to reach us — most enquiries get a reply within the hour.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT DETAILS + FORM -->
+<section class="bg-cream">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1.3fr; gap:44px; align-items:start;">
+
+      <div>
+        <div class="section-head left" style="margin-bottom:30px;">
+          <p class="eyebrow">Reach Us</p>
+          <h2 style="font-size:1.6rem;">Contact details</h2>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:22px;">
+          <div>
+            <div class="eyebrow" style="color:var(--green-700);">WhatsApp</div>
+            <a href="#" data-wa style="font-size:1.05rem; font-weight:600; color:var(--green-950);">Chat with us instantly</a>
+          </div>
+          <div>
+            <div class="eyebrow" style="color:var(--green-700);">Email</div>
+            <p style="font-size:1.05rem; font-weight:600;">info@tutoria.in</p>
+          </div>
+          <div>
+            <div class="eyebrow" style="color:var(--green-700);">Service Area</div>
+            <p style="font-size:1.05rem; font-weight:600;">West Bengal — Kolkata &amp; nearby districts</p>
+          </div>
+          <div>
+            <div class="eyebrow" style="color:var(--green-700);">Hours</div>
+            <p style="font-size:1.05rem; font-weight:600;">Mon – Sat, 9:00 AM – 8:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="form-card" id="contactForm">
+        <div class="form-row">
+          <div class="field"><label>Full name</label><input type="text" name="name" required></div>
+          <div class="field"><label>Phone number</label><input type="tel" name="phone" required></div>
+        </div>
+        <div class="field"><label>Subject / Grade you need help with</label><input type="text" name="subject" placeholder="e.g. Class 8 Maths" required></div>
+        <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us a bit about what you're looking for"></textarea></div>
+        <button type="submit" class="btn btn-whatsapp btn-lg" style="width:100%; justify-content:center;">
+          <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.67 4.68 1.83 6.61L3 29l7.06-2.28a12.44 12.44 0 0 0 5.94 1.52h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3Zm0 22.6h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.22-4.19 1.35 1.37-4.08-.25-.42a10.36 10.36 0 0 1-1.6-5.5c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.35 10.35 0 0 1 3.05 7.37c0 5.75-4.69 10.43-10.5 10.43Zm5.72-7.8c-.31-.16-1.85-.91-2.14-1.02-.29-.1-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.23-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.19.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37Z"/></svg>
+          Send via WhatsApp
+        </button>
+        <p class="form-note">This opens WhatsApp with your message pre-filled — just hit send.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="index.html" class="brand"><img src="logo.png" alt="Tutoria logo"><span>Tutoria</span></a>
+        <p>Verified home tutors for KG to Class 12 across West Bengal — CBSE, ICSE, WB Board and more.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <a href="index.html">Home</a>
+        <a href="join-as-tutor.html">Join as Tutor</a>
+        <a href="contact.html">Contact</a>
+        <a href="review.html">Leave a Review</a>
+      </div>
+      <div class="footer-col">
+        <h4>Boards</h4>
+        <a href="index.html#boards">CBSE</a>
+        <a href="index.html#boards">ICSE</a>
+        <a href="index.html#boards">WB Board</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="#" data-wa>WhatsApp Us</a>
+        <p>info@tutoria.in</p>
+        <p>West Bengal, India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span class="js-year"></span> Tutoria. All rights reserved.</span>
+      <span>A West Bengal home tutoring service.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" data-wa aria-label="WhatsApp Us">
+  <svg viewBox="0 0 32 32"><path d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.67 4.68 1.83 6.61L3 29l7.06-2.28a12.44 12.44 0 0 0 5.94 1.52h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3Zm0 22.6h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.22-4.19 1.35 1.37-4.08-.25-.42a10.36 10.36 0 0 1-1.6-5.5c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.35 10.35 0 0 1 3.05 7.37c0 5.75-4.69 10.43-10.5 10.43Zm5.72-7.8c-.31-.16-1.85-.91-2.14-1.02-.29-.1-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.23-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.19.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37Z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
