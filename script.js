@@ -98,6 +98,7 @@ async function renderTestimonials() {
   }
   track.innerHTML = list.map(t => `
     <div class="testi-card">
+      <div class="testi-mark">&ldquo;</div>
       <p class="testi-quote">${t.quote}</p>
       <div class="testi-foot">
         <div class="testi-avatar">${initials(t.name)}</div>
