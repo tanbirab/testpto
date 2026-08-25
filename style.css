@@ -207,7 +207,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 .hero-full{
   padding:0;
   min-height:calc(100svh - var(--header-h));
-  background:linear-gradient(160deg, var(--pine-950) 0%, #0c2035 62%, var(--pine-950) 100%);
+  background:var(--pine-950);
 }
 .hero-full-grid{
   display:grid;
@@ -249,7 +249,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   display:flex;
   align-items:flex-end;
   justify-content:center;
-  border-left:1px solid rgba(177,138,74,.18);
 }
 .hero-full-glow{
   position:absolute;
@@ -287,8 +286,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   }
   .hero-full-text h1{max-width:none;}
   .hero-full-image{
-    border-left:none;
-    border-top:1px solid rgba(177,138,74,.18);
     min-height:38vh;
   }
   .hero-full-image img{height:100%; max-height:52vh;}
