@@ -17,14 +17,14 @@ const DEFAULT_TESTIMONIALS = [
     quote: "Our tutor understood exactly where my son was struggling in Maths. Three months in, his confidence before exams has completely changed."
   },
   {
-    name: "Arindam Sen",
-    meta: "Parent of Class 6 (CBSE), New Town",
-    quote: "What I liked most was how quickly Tutoria matched us — a demo within two days, and no endless phone calls to compare tutors."
+    name: "Aritra Chowdhury",
+    meta: "Student, Class 12 (WBCHSE), Jadavpur",
+    quote: "My Physics and Maths tutor through Tutoria actually explains concepts instead of rushing through the syllabus. I finally look forward to boards prep instead of dreading it."
   },
   {
-    name: "Priya Roy",
-    meta: "Parent of Class 11 (WBCHSE), Behala",
-    quote: "Finding someone who knew the West Bengal board syllabus well was hard until Tutoria. Her Physics scores have genuinely improved."
+    name: "Debolina Ghosh",
+    meta: "Tutor, Maths & Science, Behala",
+    quote: "I signed up expecting a slow trickle of leads, but Tutoria matched me with students that genuinely fit my subjects and area within days — and the payments have always been on time."
   }
 ];
 

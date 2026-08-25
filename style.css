@@ -7,22 +7,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap');
 
 :root{
-  --ink:#181722;
-  --ink-soft:#57566a;
-  --ink-faint:#8d8ca0;
+  --ink:#1c2430;
+  --ink-soft:#5b6472;
+  --ink-faint:#93a0ac;
 
-  --pine-950:#131229;   /* header / footer / dark sections — deep indigo navy */
-  --pine-800:#211f42;   /* hover states on dark */
-  --pine-600:#4a3f8f;   /* links, small accents on light */
+  --pine-950:#123354;   /* header / footer / dark sections — friendly deep blue */
+  --pine-800:#1c4670;   /* hover states on dark */
+  --pine-600:#2f6996;   /* links, small accents on light */
 
-  --gold:#d99a34;        /* warm accent — CTAs, highlights, FAQ plus */
-  --gold-dark:#b97f24;
+  --gold:#f2784b;        /* warm coral accent — CTAs, highlights, FAQ plus */
+  --gold-dark:#d95f34;
 
-  --paper:#faf8f3;
-  --paper-alt:#f1ece1;
+  --paper:#fffaf3;
+  --paper-alt:#fbeee0;
   --white:#ffffff;
 
-  --line: rgba(19,18,41,0.1);
+  --line: rgba(18,51,84,0.1);
   --line-on-dark: rgba(255,255,255,0.14);
 
   --whatsapp:#25d366;
@@ -111,6 +111,8 @@ h1,h2,h3{font-family:var(--font-display); font-weight:500; letter-spacing:-.01em
 
 /* -------------------- hero: typography-led, no illustration clutter -------------------- */
 .hero{
+  position:relative;
+  overflow:hidden;
   background:var(--pine-950);
   color:var(--paper);
   padding:56px 0 56px;
@@ -129,25 +131,67 @@ h1,h2,h3{font-family:var(--font-display); font-weight:500; letter-spacing:-.01em
   margin-bottom:26px;
 }
 .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:40px;}
-.hero-stats{
-  display:grid; grid-template-columns:repeat(4, auto); gap:0 40px;
-  border-top:1px solid var(--line-on-dark);
-  padding-top:20px;
-  width:fit-content;
-}
-.hero-stat b{
-  display:block; font-family:var(--font-display); font-weight:500; font-size:1.5rem;
-  color:#fff;
-}
-.hero-stat span{font-size:.78rem; color:rgba(255,255,255,.55);}
+/* On the split (homepage) hero the CTAs are the last element now that the
+   stats row is gone — drop the trailing margin so the section's own bottom
+   padding is the only space left under the buttons (no doubled-up gap). */
+.hero-split .hero-ctas{margin-bottom:0;}
 
-@media (max-width:640px){
-  .hero-stats{grid-template-columns:repeat(2, auto); gap:20px 32px; width:100%;}
+/* -------------------- hero split (with portrait) -------------------- */
+.hero-split{
+  display:grid; grid-template-columns:1.15fr 0.85fr; align-items:center; gap:24px;
 }
-
+.hero-portrait{
+  /* Anchored to the hero SECTION's true top+bottom edges (not the grid row),
+     so the cutout's feet always meet the dark-blue background with no gap —
+     independent of the text column's height or the section's own padding.
+     top:0 + bottom:0 (rather than a fixed height) means it gracefully shrinks
+     if the hero ever gets shorter than the image, instead of overflowing it. */
+  position:absolute;
+  right:max(32px, calc((100% - var(--container)) / 2 + 32px));
+  top:0; bottom:0;
+  display:flex; justify-content:center; align-items:flex-end;
+  pointer-events:none;
+}
+.hero-portrait::before{
+  content:'';
+  position:absolute;
+  left:50%; bottom:0;
+  width:340px; height:340px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle, var(--gold) 0%, rgba(242,120,75,0) 72%);
+  opacity:.28;
+  border-radius:50%;
+  z-index:0;
+}
+.hero-portrait::after{
+  content:'';
+  position:absolute;
+  left:50%; bottom:0;
+  width:290px; height:290px;
+  transform:translateX(-50%);
+  background:var(--pine-800);
+  border-radius:50%;
+  z-index:0;
+}
+.hero-portrait img{
+  position:relative; z-index:1;
+  display:block;
+  width:auto; height:100%; max-height:440px; object-fit:contain; object-position:bottom;
+}
+@media (max-width:900px){
+  .hero{min-height:0; max-height:none; padding:40px 0 0;}
+  .hero-split{grid-template-columns:1fr;}
+  .hero-portrait{
+    position:relative; right:auto; top:auto; bottom:auto;
+    height:280px; margin-top:20px;
+  }
+  .hero-portrait img{max-height:280px;}
+  .hero-portrait::before{width:220px; height:220px;}
+  .hero-portrait::after{width:190px; height:190px;}
+}
 /* -------------------- section basics -------------------- */
 section{padding:88px 0;}
-.section-head{max-width:600px; margin:0 auto 50px;}
+.section-head{max-width:600px; margin:0 0 50px;}
 .section-head.center{text-align:center; margin-left:auto; margin-right:auto;}
 .section-head h2{font-size:clamp(1.7rem,2.8vw,2.3rem); margin-top:12px; font-weight:500;}
 .section-head p{color:var(--ink-soft); margin-top:14px; font-size:1rem;}
@@ -266,6 +310,14 @@ section{padding:88px 0;}
 }
 .wa-float:hover{transform:scale(1.06); animation-play-state:paused;}
 .wa-float svg{width:27px; height:27px; fill:#fff;}
+
+/* -------------------- contact page layout -------------------- */
+.contact-grid{
+  display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:start;
+}
+@media (max-width:800px){
+  .contact-grid{grid-template-columns:1fr; gap:36px;}
+}
 
 /* -------------------- forms -------------------- */
 .form-card{
