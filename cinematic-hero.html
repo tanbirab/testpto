@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinematic Hero Boilerplate</title>
+
+<style>
+  /* ==========================================================
+     RESET — strip default spacing/scroll so the viewport is
+     ours to control exactly.
+     ========================================================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;              /* zero scroll, in any direction */
+    background: #000;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  /* ==========================================================
+     STAGE — the full-bleed 16:9 viewport.
+     We center a 16:9 box inside 100vw x 100vh. Depending on the
+     screen's own aspect ratio, this box is either exactly
+     100vw wide (letterboxed top/bottom) or exactly 100vh tall
+     (pillarboxed left/right) — this is what keeps it "cinematic"
+     on any laptop screen instead of stretching/cropping oddly.
+     ========================================================== */
+  .stage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+  }
+
+  .frame {
+    position: relative;
+    width: 100vw;
+    height: calc(100vw * 9 / 16);   /* enforce 16:9 */
+    max-height: 100vh;
+    max-width: calc(100vh * 16 / 9);
+    overflow: hidden;
+  }
+
+  /* ==========================================================
+     BACKGROUND MEDIA — video with an image/gradient fallback.
+     Swap the <source src> for a real file; the gradient behind
+     it is what shows instantly while the video loads (or if it
+     never loads at all).
+     ========================================================== */
+  .bg-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(120% 120% at 50% 30%, #2a2f3a 0%, #14161c 55%, #0a0b0e 100%);
+  }
+
+  .bg-media video,
+  .bg-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;             /* fill the frame, crop as needed, never distort */
+    object-position: center;
+  }
+
+  /* darken/tint the media so white text stays legible on any footage */
+  .bg-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      180deg,
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.25) 35%,
+      rgba(0,0,0,.35) 70%,
+      rgba(0,0,0,.65) 100%
+    );
+  }
+
+  /* ==========================================================
+     LETTERBOX BARS — subtle dark bars top & bottom, drawn INSIDE
+     the 16:9 frame so they read as a cinematic device rather than
+     just "empty space." (If the screen itself is wider than
+     16:9, the .stage background already adds real letterboxing
+     around the frame — these are the intentional in-frame bars.)
+     ========================================================== */
+  .letterbox-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: clamp(18px, 4vh, 48px);
+    background: linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,.55));
+    z-index: 3;
+    pointer-events: none;
+  }
+  .letterbox-bar.top    { top: 0; }
+  .letterbox-bar.bottom { bottom: 0; }
+
+  /* ==========================================================
+     CONTENT — centered heading + CTA, sitting above the scrim
+     and clear of the letterbox bars.
+     ========================================================== */
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: clamp(48px, 8vh, 96px) clamp(24px, 6vw, 80px);
+    color: #fff;
+  }
+
+  .eyebrow {
+    font-size: clamp(0.7rem, 1vw, 0.9rem);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.65);
+    margin-bottom: clamp(12px, 2vh, 22px);
+  }
+
+  /* clamp(MIN, PREFERRED, MAX) — scales fluidly with viewport
+     width instead of jumping between fixed breakpoints. */
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    max-width: 18ch;
+    text-wrap: balance;
+    text-shadow: 0 4px 30px rgba(0,0,0,.4);
+  }
+
+  .subhead {
+    margin-top: clamp(14px, 2.4vh, 26px);
+    font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+    color: rgba(255,255,255,.8);
+    max-width: 46ch;
+    line-height: 1.6;
+  }
+
+  .cta {
+    margin-top: clamp(24px, 4vh, 44px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: clamp(12px, 1.6vh, 18px) clamp(26px, 3vw, 40px);
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: #0a0b0e;
+    background: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+  }
+  .cta:hover  { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(0,0,0,.45); }
+  .cta:active { transform: translateY(0); }
+
+  /* Respect users who've asked for less motion. */
+  @media (prefers-reduced-motion: reduce) {
+    .cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="frame">
+
+      <!-- Background media: replace the <source> with a real video,
+           or delete the <video> block and just keep an <img> if you
+           only need a static background. -->
+      <div class="bg-media">
+        <video autoplay muted loop playsinline poster="">
+          <source src="your-video.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="bg-scrim"></div>
+
+      <div class="letterbox-bar top"></div>
+      <div class="letterbox-bar bottom"></div>
+
+      <div class="content">
+        <p class="eyebrow">Now Streaming</p>
+        <h1>Every story deserves a big screen.</h1>
+        <p class="subhead">
+          A full-bleed cinematic hero that scales cleanly from a
+          13" laptop to a 4K display, with zero scroll and zero cropping surprises.
+        </p>
+        <a href="#" class="cta">Watch the Trailer →</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
