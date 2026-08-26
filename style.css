@@ -610,57 +610,32 @@ section{padding:88px 0;}
 }
 
 /* ============================================================
-   SHARED CINEMATIC-SECTION HELPERS
-   Reused by every full-bleed 16:9 section below (boards, why,
-   how). A thin, fluid "letterbox" gradient at the very top and
-   bottom of the 16:9 frame — the same device used in
-   cinematic-hero.html — reinforcing the widescreen, cinema feel.
+   FEATURE-BAND SECTIONS — Boards / How It Works / Why Tutoria
+   Plain, content-driven sections (no forced viewport height, no
+   16:9 frame, no letterbox bars). Height comes from the content
+   itself, so nothing ever gets clipped and there's no seam
+   between stacked sections — same principle as the hero, which
+   uses min-height rather than a hard height.
    ============================================================ */
-.letterbox-bar{
-  position:absolute;
-  left:0; right:0;
-  height:clamp(8px,1.8vh,22px);
-  z-index:3;
-  pointer-events:none;
-}
-.letterbox-bar.top{ top:0; }
-.letterbox-bar.bottom{ bottom:0; }
-
-/* ============================================================
-   BOARDS SECTION — cinematic full-bleed 16:9 (from uploaded SVG)
-   ============================================================ */
-.boards-cinema{
-  position:relative;
-  width:100vw;
-  /* subtract the sticky header's height so the section + header
-     together equal exactly one viewport — this is what actually
-     stops the page from scrolling on a laptop screen */
-  height:calc(100vh - var(--header-h));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#22588C;
-  overflow:hidden;
-  box-sizing:border-box;
-}
-.boards-frame{
-  position:relative;
-  width:100vw;
-  height:calc(100vw * 9 / 16);                    /* enforce 16:9 */
-  max-height:calc(100vh - var(--header-h));       /* never taller than the visible viewport */
-  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
-  margin:0 auto;
-  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
+.boards-cinema,
+.how-cinema,
+.why-cinema{
+  min-height:calc(100vh - var(--header-h));
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:clamp(10px,2.2vh,22px);
-  box-sizing:border-box;
-  overflow:hidden;
+  padding:clamp(56px,7vw,88px) 0;
 }
-/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
-.boards-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
-.boards-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.boards-frame,
+.how-frame,
+.why-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(28px,4vh,44px);
+}
 
 .boards-eyebrow{
   font-family:var(--font-body); font-weight:700;
@@ -689,7 +664,7 @@ section{padding:88px 0;}
 .board-card{
   position:relative;
   border-radius:clamp(12px,1.4vw,18px);
-  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
+  padding:clamp(18px,2.4vw,28px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -725,22 +700,6 @@ section{padding:88px 0;}
   font-size:clamp(.68rem,.86vw,.8rem); line-height:1.4;
   color:#173859; margin:0 0 clamp(6px,1.1vh,12px);
 }
-.board-points{
-  list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
-}
-.board-points li{
-  position:relative; padding-left:15px;
-  font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.6rem,.76vw,.72rem); color:#0D243B;
-}
-.board-points li::before{
-  content:""; position:absolute; left:0; top:.5em;
-  width:5px; height:5px; border-radius:50%; background:#22588C;
-}
-.board-card--2 .board-points li::before,
-.board-card--3 .board-points li::before{ background:#0D243B; }
-
 .board-icon-anchor{
   position:absolute;
   right:clamp(8px,1.2vw,14px);
@@ -755,8 +714,6 @@ section{padding:88px 0;}
 .board-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .boards-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
-  .boards-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .boards-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:520px){
@@ -770,36 +727,7 @@ section{padding:88px 0;}
    typography swapped to the site's DM Sans / Inter fonts and
    sized with clamp() so it scales fluidly with the viewport.)
    ============================================================ */
-.why-cinema{
-  position:relative;
-  width:100vw;
-  /* subtract the sticky header's height — see .boards-cinema note above */
-  height:calc(100vh - var(--header-h));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#22588C;              /* canvas fill from the source SVG */
-  overflow:hidden;
-  box-sizing:border-box;
-}
-.why-frame{
-  position:relative;
-  width:100vw;
-  height:calc(100vw * 9 / 16);                        /* enforce a 16:9 frame */
-  max-height:calc(100vh - var(--header-h));           /* never taller than the visible viewport */
-  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
-  margin:0 auto;
-  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:clamp(10px,2.2vh,22px);
-  box-sizing:border-box;
-  overflow:hidden;
-}
-/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
-.why-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
-.why-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.why-cinema{ background:#22588C; }              /* canvas fill from the source SVG */
 
 /* ---- Header: eyebrow + title, fluid typography ---- */
 .why-eyebrow{
@@ -826,7 +754,7 @@ section{padding:88px 0;}
 .why-card{
   position:relative;
   border-radius:clamp(12px,1.4vw,18px);
-  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
+  padding:clamp(18px,2.4vw,28px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -866,22 +794,6 @@ section{padding:88px 0;}
 }
 .why-card--3 .why-desc{ color:#0B1E30; }
 
-.why-points{
-  list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
-}
-.why-points li{
-  position:relative; padding-left:15px;
-  font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.6rem,.76vw,.72rem); color:#0B1E30;
-}
-.why-points li::before{
-  content:""; position:absolute; left:0; top:.5em;
-  width:5px; height:5px; border-radius:50%; background:#22588C;
-}
-.why-card--2 .why-points li::before,
-.why-card--3 .why-points li::before{ background:#0B1E30; }
-
 /* ---- Icon badge (the "interlocking" dark tile from the SVG) ---- */
 .why-icon-anchor{
   align-self:flex-end;
@@ -897,8 +809,6 @@ section{padding:88px 0;}
 .why-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .why-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
-  .why-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .why-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:520px){
@@ -912,36 +822,7 @@ section{padding:88px 0;}
    to the site's DM Sans / Inter fonts and sized with clamp()
    so it scales fluidly with the viewport.)
    ============================================================ */
-.how-cinema{
-  position:relative;
-  width:100vw;
-  /* subtract the sticky header's height — see .boards-cinema note above */
-  height:calc(100vh - var(--header-h));
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background:#228C68;              /* canvas fill from the source SVG */
-  overflow:hidden;
-  box-sizing:border-box;
-}
-.how-frame{
-  position:relative;
-  width:100vw;
-  height:calc(100vw * 9 / 16);                        /* enforce a 16:9 frame */
-  max-height:calc(100vh - var(--header-h));           /* never taller than the visible viewport */
-  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
-  margin:0 auto;
-  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:clamp(10px,2.2vh,22px);
-  box-sizing:border-box;
-  overflow:hidden;
-}
-/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
-.how-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
-.how-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.how-cinema{ background:#228C68; }               /* canvas fill from the source SVG */
 
 /* ---- Header: eyebrow + title, fluid typography ---- */
 .how-eyebrow{
@@ -968,7 +849,7 @@ section{padding:88px 0;}
 .how-card{
   position:relative;
   border-radius:clamp(12px,1.4vw,18px);
-  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
+  padding:clamp(18px,2.4vw,28px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -1008,22 +889,6 @@ section{padding:88px 0;}
 }
 .how-card--3 .how-desc{ color:#0B2B20; }
 
-.how-points{
-  list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
-}
-.how-points li{
-  position:relative; padding-left:15px;
-  font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.6rem,.76vw,.72rem); color:#0B2B20;
-}
-.how-points li::before{
-  content:""; position:absolute; left:0; top:.5em;
-  width:5px; height:5px; border-radius:50%; background:#228C68;
-}
-.how-card--2 .how-points li::before,
-.how-card--3 .how-points li::before{ background:#0B2B20; }
-
 /* ---- Icon badge (the "interlocking" dark tile from the SVG) ---- */
 .how-icon-anchor{
   align-self:flex-end;
@@ -1039,8 +904,6 @@ section{padding:88px 0;}
 .how-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .how-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
-  .how-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .how-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:520px){
