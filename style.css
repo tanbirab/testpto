@@ -43,7 +43,7 @@
 }
 
 *,*::before,*::after{box-sizing:border-box; margin:0; padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; background:var(--pine-950);}
 body{
   font-family:var(--font-body);
   color:var(--ink);
@@ -63,7 +63,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   letter-spacing:.14em; text-transform:uppercase; color:var(--ink-faint);
 }
 .bg-dark .eyebrow{color:rgba(255,255,255,.55);}
-.deco-swirl{position:absolute; top:-30px; right:-30px; width:220px; height:220px; z-index:0; pointer-events:none;}
 
 /* -------------------- buttons: square, quiet, no glow -------------------- */
 .btn{
@@ -286,36 +285,31 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   .hero-full-image img{height:100%; max-height:52vh;}
 }
 @media (max-width:640px){
-  .hero-full-grid{min-height:calc(94svh - var(--header-h));}
-  .hero-full-text{padding:4vh 22px 2.5vh;}
-  .hero-full-text .lead{margin-bottom:28px;}
-  .hero-full-text .hero-ctas{flex-direction:column;}
-  .hero-full-text .hero-ctas .btn{width:100%; justify-content:center;}
-  .hero-full-image{min-height:34vh;}
-  .hero-full-image img{max-height:40vh;}
+  .hero-full-grid{
+    min-height:calc(94svh - var(--header-h));
+    grid-template-rows:auto 1fr;
+  }
+  /* tighter, higher text block so the photo gets more room below it */
+  .hero-full-text{padding:1.5vh 22px 0;}
+  .hero-full-text .eyebrow{margin-bottom:10px;}
+  .hero-full-text h1{margin:0 0 10px; font-size:clamp(1.8rem,7.2vw,2.3rem);}
+  .hero-full-text .lead{margin-bottom:16px;}
+  .hero-full-text .hero-ctas{flex-direction:column; gap:10px;}
+  .hero-full-text .hero-ctas .btn{width:100%; justify-content:center; padding:13px 26px;}
+  .hero-full-image{
+    min-height:0;
+    /* clear air above the fixed WhatsApp/Admin buttons so her feet aren't hidden behind them */
+    padding-bottom:76px;
+  }
+  .hero-full-image img{height:100%; max-height:none;}
 }
 
 /* -------------------- section basics -------------------- */
-section{padding:110px 0;}
-.section-head{max-width:640px; margin:0 0 64px;}
+section{padding:88px 0;}
+.section-head{max-width:600px; margin:0 0 50px;}
 .section-head.center{text-align:center; margin-left:auto; margin-right:auto;}
-.section-head h2{font-size:clamp(2.1rem,3.6vw,3rem); margin-top:14px; font-weight:700; letter-spacing:-.01em;}
-.section-head p{color:var(--ink-soft); margin-top:16px; font-size:1.02rem; max-width:52ch;}
-.bg-dark .section-head h2{color:#fff;}
-
-/* -------------------- slide numbering (deck feel) -------------------- */
-body{counter-reset:slidecount;}
-.slide{counter-increment:slidecount; position:relative;}
-.slide::before{
-  content:counter(slidecount, decimal-leading-zero);
-  position:absolute; top:30px; right:32px;
-  font-family:var(--font-body); font-weight:600; font-size:.7rem;
-  letter-spacing:.16em; color:var(--ink-faint); opacity:.5; z-index:2;
-}
-.slide.bg-dark::before{color:rgba(255,255,255,.4);}
-@media (max-width:720px){
-  .slide::before{top:20px; right:22px;}
-}
+.section-head h2{font-size:clamp(1.7rem,2.8vw,2.3rem); margin-top:12px; font-weight:700;}
+.section-head p{color:var(--ink-soft); margin-top:14px; font-size:1rem;}
 
 .bg-paper{background:var(--paper);}
 .bg-alt{background:var(--paper-alt);}
@@ -354,119 +348,47 @@ body{counter-reset:slidecount;}
   border-right:1px solid var(--line); border-bottom:1px solid var(--line);
 }
 
-/* -------------------- areas: editorial index (homepage) -------------------- */
-.areas-index{column-count:3; column-gap:64px;}
-.areas-item{
-  display:flex; align-items:baseline; gap:16px;
-  padding:14px 0;
-  break-inside:avoid;
-  font-family:var(--font-display); font-weight:700; font-size:1.2rem; color:var(--ink);
-}
-.areas-num{
-  font-family:var(--font-body); font-weight:600; font-size:.7rem;
-  letter-spacing:.06em; color:var(--gold-dark); flex:none;
-}
-
-/* -------------------- boards: visual journey (homepage) -------------------- */
-.journey-track{display:flex; align-items:flex-start; gap:8px;}
-.journey-stop{flex:1; padding-right:22px;}
-.journey-num{
-  display:block; font-family:var(--font-display); font-weight:700;
-  font-size:2.1rem; color:var(--paper-alt); -webkit-text-stroke:1.5px var(--ink-faint);
-  margin-bottom:18px; line-height:1;
-}
-.journey-tag{
-  display:block; font-size:.72rem; font-weight:700; letter-spacing:.1em;
-  text-transform:uppercase; color:var(--gold-dark); margin-bottom:12px;
-}
-.journey-stop h3{font-size:1.15rem; margin-bottom:10px; font-weight:700;}
-.journey-stop p{color:var(--ink-soft); font-size:.92rem;}
-
-/* -------------------- why tutoria: bold statement panel (homepage) -------------------- */
-.statement-grid{
-  display:grid; grid-template-columns:repeat(2,1fr);
-  gap:56px 64px;
-}
-.statement{position:relative; z-index:1;}
-.statement-num{
-  font-family:var(--font-display); font-weight:700; font-size:2.2rem;
-  color:var(--gold); display:block; margin-bottom:18px; line-height:1;
-}
-.statement h3{font-size:1.5rem; margin-bottom:14px; font-weight:700; color:#fff;}
-.statement p{color:rgba(255,255,255,.66); font-size:1rem; max-width:38ch;}
-
-/* -------------------- how it works: sequence (homepage) -------------------- */
-.sequence{display:flex; align-items:flex-start; gap:0;}
-.sequence-step{flex:1; padding-right:20px;}
-.sequence-num{
-  font-family:var(--font-display); font-weight:700; font-size:2.6rem;
-  color:var(--paper-alt); -webkit-text-stroke:1.5px var(--ink-faint);
-  display:block; margin-bottom:20px; line-height:1;
-}
-.sequence-step h3{font-size:1.1rem; margin-bottom:10px; font-weight:700;}
-.sequence-step p{color:var(--ink-soft); font-size:.92rem;}
-.sequence-arrow{
-  flex:none; align-self:flex-start; margin-top:18px;
-  font-size:1.3rem; color:var(--gold-dark); padding:0 22px;
-}
-
 /* -------------------- testimonials -------------------- */
 .testi-track{
-  display:flex; flex-direction:column;
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:22px;
 }
 .testi-card{
-  background:transparent; padding:44px 0;
-  border:none; border-radius:0; box-shadow:none;
+  background:var(--white); padding:32px 30px 28px;
+  border:1px solid var(--line); border-top:3px solid var(--gold);
+  border-radius:var(--radius);
+  box-shadow:0 1px 2px rgba(19,18,41,.04);
+  transition:transform .18s ease, box-shadow .18s ease;
   display:flex; flex-direction:column;
-  transition:none;
 }
-.testi-card:hover{transform:none; box-shadow:none;}
+.testi-card:hover{transform:translateY(-3px); box-shadow:0 10px 24px rgba(19,18,41,.08);}
 .testi-mark{
-  font-family:var(--font-display); font-size:3rem; line-height:1;
-  color:var(--gold); margin-bottom:10px; font-weight:700;
+  font-family:var(--font-display); font-size:2.6rem; line-height:1;
+  color:var(--gold); margin-bottom:6px; font-weight:600;
 }
-.testi-quote{
-  font-family:var(--font-display); font-weight:700;
-  color:var(--ink); font-size:clamp(1.2rem,1.9vw,1.6rem);
-  line-height:1.4; max-width:820px; letter-spacing:-.01em;
-}
-.testi-foot{margin-top:26px; display:flex; align-items:center; gap:14px;}
+.testi-quote{color:var(--ink); font-size:.98rem; line-height:1.6; flex:1;}
+.testi-foot{margin-top:24px; display:flex; align-items:center; gap:12px;}
 .testi-avatar{
-  width:42px; height:42px; border-radius:50%; flex:none;
+  width:40px; height:40px; border-radius:50%; flex:none;
   background:var(--pine-950); color:#fff;
   display:flex; align-items:center; justify-content:center;
   font-family:var(--font-body); font-weight:600; font-size:.82rem;
 }
-.testi-name{font-weight:600; font-size:.92rem;}
+.testi-name{font-weight:600; font-size:.9rem;}
 .testi-meta{font-size:.8rem; color:var(--ink-faint); margin-top:2px;}
-.testi-empty{color:var(--ink-faint); font-style:italic; padding:20px 0;}
+.testi-empty{color:var(--ink-faint); font-style:italic; padding:20px;}
 
 /* -------------------- FAQ -------------------- */
-.faq{max-width:760px; counter-reset:faqnum;}
-.faq-item{border-bottom:1px solid var(--line); counter-increment:faqnum;}
+.faq{max-width:720px;}
+.faq-item{border-bottom:1px solid var(--line);}
 .faq-item:first-child{border-top:1px solid var(--line);}
 .faq-q{
-  width:100%; display:flex; justify-content:space-between; align-items:baseline;
-  gap:20px;
-  padding:28px 0; padding-left:56px; position:relative;
-  text-align:left; font-weight:600; font-size:1.05rem; color:var(--ink);
-  font-family:var(--font-display);
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  padding:22px 0; text-align:left; font-weight:600; font-size:1rem; color:var(--ink);
 }
-.faq-q::before{
-  content:counter(faqnum, decimal-leading-zero);
-  position:absolute; left:0; top:28px;
-  font-family:var(--font-display); font-weight:500; font-size:1rem;
-  color:var(--gold);
-}
-.faq-q .plus{font-family:var(--font-display); font-weight:400; font-size:1.3rem; color:var(--ink-faint); transition:transform .2s; flex:none;}
+.faq-q .plus{font-family:var(--font-display); font-weight:400; font-size:1.3rem; color:var(--ink-faint); transition:transform .2s;}
 .faq-item.open .plus{transform:rotate(45deg);}
 .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
-.faq-a p{padding-bottom:26px; padding-left:56px; color:var(--ink-soft); font-size:.96rem; max-width:600px;}
-@media (max-width:640px){
-  .faq-q{padding-left:42px; font-size:.98rem;}
-  .faq-q::before{font-size:.9rem;}
-  .faq-a p{padding-left:42px;}
-}
+.faq-a p{padding-bottom:22px; color:var(--ink-soft); font-size:.94rem; max-width:620px;}
 
 /* -------------------- CTA band -------------------- */
 .cta-band{
@@ -607,47 +529,7 @@ body{counter-reset:slidecount;}
   .row-list, .area-list{border-left:none;}
   .area-list span{padding:10px 14px; font-size:.82rem;}
   .footer-top{grid-template-columns:1fr; gap:30px;}
-}
-
-/* -------------------- homepage editorial sections: mobile (portrait) -------------------- */
-@media (max-width:900px){
-  /* boards journey -> vertical timeline */
-  .journey-track{flex-direction:column; padding-top:0;}
-  .journey-track::before{display:none;}
-  .journey-stop{
-    border-left:none; border-top:1px solid var(--line);
-    padding:30px 0 0; margin-top:30px;
-  }
-  .journey-stop:first-child{border-top:none; padding-top:0; margin-top:0;}
-  .journey-num{position:static; display:block; margin-bottom:12px;}
-  .journey-stop:first-child .journey-num{margin-bottom:12px;}
-  .journey-stop h3, .journey-stop p{padding-right:0;}
-
-  /* why tutoria -> single column statements */
-  .statement-grid{grid-template-columns:1fr;}
-  .statement{padding:38px 0; border-right:none; border-left:none;}
-
-  /* how it works -> vertical sequence */
-  .sequence{flex-direction:column;}
-  .sequence-step{width:100%;}
-  .sequence-step h3, .sequence-step p{padding-right:0;}
-  .sequence-arrow{
-    align-self:flex-start; margin:10px 0 6px 2px;
-    transform:rotate(90deg); padding:0;
-  }
-
-  /* areas -> two columns */
-  .areas-index{column-count:2; column-gap:36px;}
-}
-
-@media (max-width:640px){
-  .statement{padding:32px 0;}
-  .statement-num{font-size:2.1rem; margin-bottom:14px;}
-  .journey-num{font-size:1.4rem;}
-  .sequence-num{font-size:1.9rem;}
-  .areas-index{column-count:1;}
-  .areas-item{font-size:1.05rem; padding:15px 0;}
-  .testi-card{padding:38px 0;}
-  .testi-quote{font-size:1.15rem;}
-  .testi-mark{font-size:2.5rem;}
+  .wa-float{width:50px; height:50px; right:16px; bottom:16px;}
+  .wa-float svg{width:24px; height:24px;}
+  .admin-fab{left:14px; bottom:14px; padding:5px 10px; font-size:.66rem;}
 }
