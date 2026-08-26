@@ -615,7 +615,7 @@ section{padding:88px 0;}
 .boards-cinema{
   position:relative;
   width:100vw;
-  min-height:100vh;
+  height:100vh;              /* fixed, not min-height — this is what stops overflow */
   display:flex;
   align-items:center;
   justify-content:center;
@@ -626,16 +626,17 @@ section{padding:88px 0;}
 .boards-frame{
   position:relative;
   width:100vw;
-  height:calc(100vw * 9 / 16);
-  min-height:100vh;
-  max-width:calc(100vh * 16 / 9);
+  height:calc(100vw * 9 / 16);   /* enforce 16:9 */
+  max-height:100vh;               /* never taller than the screen */
+  max-width:calc(100vh * 16 / 9); /* never wider than 16:9 allows */
   margin:0 auto;
-  padding:clamp(28px,6vh,72px) clamp(24px,6vw,80px);
+  padding:clamp(20px,5vh,64px) clamp(24px,6vw,80px);
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:clamp(20px,4vh,44px);
+  gap:clamp(14px,3vh,32px);
   box-sizing:border-box;
+  overflow:hidden;
 }
 .boards-eyebrow{
   font-family:var(--font-body); font-weight:700;
@@ -728,8 +729,8 @@ section{padding:88px 0;}
 .board-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .boards-cinema{ min-height:auto; }
-  .boards-frame{ height:auto; max-width:none; min-height:auto; padding:56px 24px; }
+  .boards-cinema{ height:auto; min-height:100vh; }
+  .boards-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .boards-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:520px){
