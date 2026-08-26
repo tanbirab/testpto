@@ -610,12 +610,32 @@ section{padding:88px 0;}
 }
 
 /* ============================================================
+   SHARED CINEMATIC-SECTION HELPERS
+   Reused by every full-bleed 16:9 section below (boards, why,
+   how). A thin, fluid "letterbox" gradient at the very top and
+   bottom of the 16:9 frame — the same device used in
+   cinematic-hero.html — reinforcing the widescreen, cinema feel.
+   ============================================================ */
+.letterbox-bar{
+  position:absolute;
+  left:0; right:0;
+  height:clamp(8px,1.8vh,22px);
+  z-index:3;
+  pointer-events:none;
+}
+.letterbox-bar.top{ top:0; }
+.letterbox-bar.bottom{ bottom:0; }
+
+/* ============================================================
    BOARDS SECTION — cinematic full-bleed 16:9 (from uploaded SVG)
    ============================================================ */
 .boards-cinema{
   position:relative;
   width:100vw;
-  height:100vh;              /* fixed, not min-height — this is what stops overflow */
+  /* subtract the sticky header's height so the section + header
+     together equal exactly one viewport — this is what actually
+     stops the page from scrolling on a laptop screen */
+  height:calc(100vh - var(--header-h));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -626,44 +646,50 @@ section{padding:88px 0;}
 .boards-frame{
   position:relative;
   width:100vw;
-  height:calc(100vw * 9 / 16);   /* enforce 16:9 */
-  max-height:100vh;               /* never taller than the screen */
-  max-width:calc(100vh * 16 / 9); /* never wider than 16:9 allows */
+  height:calc(100vw * 9 / 16);                    /* enforce 16:9 */
+  max-height:calc(100vh - var(--header-h));       /* never taller than the visible viewport */
+  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
   margin:0 auto;
-  padding:clamp(20px,5vh,64px) clamp(24px,6vw,80px);
+  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:clamp(14px,3vh,32px);
+  gap:clamp(10px,2.2vh,22px);
   box-sizing:border-box;
   overflow:hidden;
 }
+/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
+.boards-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.boards-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+
 .boards-eyebrow{
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.72rem,1vw,.85rem); letter-spacing:.14em;
+  font-size:clamp(.68rem,1vw,.85rem); letter-spacing:.14em;
   text-transform:uppercase; color:#E2EDF8; margin:0;
 }
 .boards-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.5rem,4vw,2.6rem); color:#fff;
-  margin:clamp(8px,1.4vh,14px) 0 0;
+  font-size:clamp(1.3rem,3.4vw,2.4rem); color:#fff;
+  margin:clamp(6px,1vh,10px) 0 0;
 }
 .boards-sub{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.82rem,1.15vw,1.05rem); color:#E2EDF8; opacity:.9;
-  margin:clamp(6px,1vh,10px) 0 0; max-width:64ch; line-height:1.55;
+  font-size:clamp(.76rem,1.05vw,.98rem); color:#E2EDF8; opacity:.9;
+  margin:clamp(4px,.8vh,8px) 0 0; max-width:64ch; line-height:1.5;
 }
 .boards-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:clamp(14px,2vw,26px);
+  gap:clamp(12px,1.8vw,22px);
   flex:1;
   min-height:0;
 }
+/* ---- Cards: shortened padding, gaps and font sizes so the
+   whole grid comfortably clears one 16:9 frame ---- */
 .board-card{
   position:relative;
-  border-radius:clamp(14px,1.6vw,20px);
-  padding:clamp(16px,2.2vh,28px) clamp(14px,1.6vw,22px);
+  border-radius:clamp(12px,1.4vw,18px);
+  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -679,8 +705,8 @@ section{padding:88px 0;}
 
 .board-tag{
   font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.62rem,.8vw,.72rem); letter-spacing:.12em;
-  text-transform:uppercase; margin:0 0 clamp(6px,1vh,10px);
+  font-size:clamp(.58rem,.74vw,.66rem); letter-spacing:.1em;
+  text-transform:uppercase; margin:0 0 clamp(3px,.6vh,6px);
 }
 .board-card--1 .board-tag, .board-card--4 .board-tag{ color:#22588C; }
 .board-card--2 .board-tag{ color:#174573; }
@@ -688,48 +714,48 @@ section{padding:88px 0;}
 
 .board-heading{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.05rem,1.8vw,1.5rem); color:#0D243B; margin:0;
+  font-size:clamp(.92rem,1.5vw,1.28rem); color:#0D243B; margin:0;
 }
 .board-divider{
   height:1px; background:rgba(13,36,59,.22);
-  margin:clamp(8px,1.4vh,14px) 0;
+  margin:clamp(6px,1vh,10px) 0;
 }
 .board-desc{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.74rem,.95vw,.9rem); line-height:1.45;
-  color:#173859; margin:0 0 clamp(10px,1.6vh,16px);
+  font-size:clamp(.68rem,.86vw,.8rem); line-height:1.4;
+  color:#173859; margin:0 0 clamp(6px,1.1vh,12px);
 }
 .board-points{
   list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(6px,1vh,10px);
+  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
 }
 .board-points li{
-  position:relative; padding-left:16px;
+  position:relative; padding-left:15px;
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.66rem,.85vw,.8rem); color:#0D243B;
+  font-size:clamp(.6rem,.76vw,.72rem); color:#0D243B;
 }
 .board-points li::before{
   content:""; position:absolute; left:0; top:.5em;
-  width:6px; height:6px; border-radius:50%; background:#22588C;
+  width:5px; height:5px; border-radius:50%; background:#22588C;
 }
 .board-card--2 .board-points li::before,
 .board-card--3 .board-points li::before{ background:#0D243B; }
 
 .board-icon-anchor{
   position:absolute;
-  right:clamp(10px,1.4vw,16px);
-  bottom:clamp(10px,1.4vh,16px);
-  width:clamp(38px,4.4vw,54px);
-  height:clamp(38px,4.4vw,54px);
+  right:clamp(8px,1.2vw,14px);
+  bottom:clamp(8px,1.2vh,14px);
+  width:clamp(30px,3.6vw,42px);
+  height:clamp(30px,3.6vw,42px);
   background:#0D243B;
-  border-radius:clamp(10px,1.2vw,16px);
+  border-radius:clamp(8px,1vw,12px);
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 6px 16px rgba(0,0,0,.25);
 }
 .board-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .boards-cinema{ height:auto; min-height:100vh; }
+  .boards-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
   .boards-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .boards-grid{ grid-template-columns:repeat(2,1fr); }
 }
@@ -747,7 +773,8 @@ section{padding:88px 0;}
 .why-cinema{
   position:relative;
   width:100vw;
-  height:100vh;                    /* fixed height = zero scroll on desktop */
+  /* subtract the sticky header's height — see .boards-cinema note above */
+  height:calc(100vh - var(--header-h));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -758,43 +785,48 @@ section{padding:88px 0;}
 .why-frame{
   position:relative;
   width:100vw;
-  height:calc(100vw * 9 / 16);     /* enforce a 16:9 frame */
-  max-height:100vh;                /* never taller than the viewport */
-  max-width:calc(100vh * 16 / 9);  /* never wider than 16:9 allows */
+  height:calc(100vw * 9 / 16);                        /* enforce a 16:9 frame */
+  max-height:calc(100vh - var(--header-h));           /* never taller than the visible viewport */
+  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
   margin:0 auto;
-  padding:clamp(20px,5vh,64px) clamp(24px,6vw,80px);
+  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:clamp(16px,3.4vh,34px);
+  gap:clamp(10px,2.2vh,22px);
   box-sizing:border-box;
   overflow:hidden;
 }
+/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
+.why-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.why-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
 
 /* ---- Header: eyebrow + title, fluid typography ---- */
 .why-eyebrow{
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.72rem,1vw,.85rem); letter-spacing:.14em;
+  font-size:clamp(.68rem,1vw,.85rem); letter-spacing:.14em;
   text-transform:uppercase; color:#D2E4F5; margin:0;
 }
 .why-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.5rem,4vw,2.6rem); color:#fff;
-  margin:clamp(8px,1.4vh,14px) 0 0;
+  font-size:clamp(1.3rem,3.4vw,2.4rem); color:#fff;
+  margin:clamp(6px,1vh,10px) 0 0;
 }
 
 /* ---- Card grid ---- */
 .why-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:clamp(14px,2vw,26px);
+  gap:clamp(12px,1.8vw,22px);
   flex:1;
   min-height:0;
 }
+/* ---- Cards: shortened padding, gaps and font sizes so the
+   whole grid comfortably clears one 16:9 frame ---- */
 .why-card{
   position:relative;
-  border-radius:clamp(14px,1.6vw,20px);
-  padding:clamp(16px,2.2vh,24px) clamp(14px,1.6vw,20px);
+  border-radius:clamp(12px,1.4vw,18px);
+  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -811,8 +843,8 @@ section{padding:88px 0;}
 
 .why-tag{
   font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.6rem,.78vw,.7rem); letter-spacing:.1em;
-  text-transform:uppercase; margin:0 0 clamp(4px,.8vh,8px);
+  font-size:clamp(.58rem,.74vw,.66rem); letter-spacing:.1em;
+  text-transform:uppercase; margin:0 0 clamp(3px,.6vh,6px);
 }
 .why-card--1 .why-tag{ color:#22588C; }
 .why-card--2 .why-tag{ color:#13385B; }
@@ -821,31 +853,31 @@ section{padding:88px 0;}
 
 .why-heading{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(.98rem,1.7vw,1.4rem); color:#0B1E30; margin:0;
+  font-size:clamp(.92rem,1.5vw,1.28rem); color:#0B1E30; margin:0;
 }
 .why-divider{
   height:1px; background:rgba(11,30,48,.22);
-  margin:clamp(8px,1.3vh,13px) 0;
+  margin:clamp(6px,1vh,10px) 0;
 }
 .why-desc{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.7rem,.9vw,.84rem); line-height:1.5;
-  color:#153350; margin:0 0 clamp(10px,1.6vh,16px);
+  font-size:clamp(.68rem,.86vw,.8rem); line-height:1.4;
+  color:#153350; margin:0 0 clamp(6px,1.1vh,12px);
 }
 .why-card--3 .why-desc{ color:#0B1E30; }
 
 .why-points{
   list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(6px,1vh,10px);
+  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
 }
 .why-points li{
-  position:relative; padding-left:16px;
+  position:relative; padding-left:15px;
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.64rem,.8vw,.76rem); color:#0B1E30;
+  font-size:clamp(.6rem,.76vw,.72rem); color:#0B1E30;
 }
 .why-points li::before{
   content:""; position:absolute; left:0; top:.5em;
-  width:6px; height:6px; border-radius:50%; background:#22588C;
+  width:5px; height:5px; border-radius:50%; background:#22588C;
 }
 .why-card--2 .why-points li::before,
 .why-card--3 .why-points li::before{ background:#0B1E30; }
@@ -853,11 +885,11 @@ section{padding:88px 0;}
 /* ---- Icon badge (the "interlocking" dark tile from the SVG) ---- */
 .why-icon-anchor{
   align-self:flex-end;
-  margin-top:clamp(10px,1.6vh,16px);
-  width:clamp(38px,4.4vw,54px);
-  height:clamp(38px,4.4vw,54px);
+  margin-top:clamp(6px,1.1vh,12px);
+  width:clamp(30px,3.6vw,42px);
+  height:clamp(30px,3.6vw,42px);
   background:#0B1E30;
-  border-radius:clamp(10px,1.2vw,16px);
+  border-radius:clamp(8px,1vw,12px);
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 6px 16px rgba(0,0,0,.25);
   flex-shrink:0;
@@ -865,7 +897,7 @@ section{padding:88px 0;}
 .why-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .why-cinema{ height:auto; min-height:100vh; }
+  .why-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
   .why-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .why-grid{ grid-template-columns:repeat(2,1fr); }
 }
@@ -883,7 +915,8 @@ section{padding:88px 0;}
 .how-cinema{
   position:relative;
   width:100vw;
-  height:100vh;                    /* fixed height = zero scroll on desktop */
+  /* subtract the sticky header's height — see .boards-cinema note above */
+  height:calc(100vh - var(--header-h));
   display:flex;
   align-items:center;
   justify-content:center;
@@ -894,43 +927,48 @@ section{padding:88px 0;}
 .how-frame{
   position:relative;
   width:100vw;
-  height:calc(100vw * 9 / 16);     /* enforce a 16:9 frame */
-  max-height:100vh;                /* never taller than the viewport */
-  max-width:calc(100vh * 16 / 9);  /* never wider than 16:9 allows */
+  height:calc(100vw * 9 / 16);                        /* enforce a 16:9 frame */
+  max-height:calc(100vh - var(--header-h));           /* never taller than the visible viewport */
+  max-width:calc((100vh - var(--header-h)) * 16 / 9); /* never wider than 16:9 allows */
   margin:0 auto;
-  padding:clamp(20px,5vh,64px) clamp(24px,6vw,80px);
+  padding:clamp(16px,4vh,48px) clamp(24px,6vw,80px);
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:clamp(16px,3.4vh,34px);
+  gap:clamp(10px,2.2vh,22px);
   box-sizing:border-box;
   overflow:hidden;
 }
+/* ---- Letterbox bars: subtle dark strips top & bottom ---- */
+.how-frame .letterbox-bar.top{ background:linear-gradient(180deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
+.how-frame .letterbox-bar.bottom{ background:linear-gradient(0deg, rgba(0,0,0,.30), rgba(0,0,0,0)); }
 
 /* ---- Header: eyebrow + title, fluid typography ---- */
 .how-eyebrow{
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.72rem,1vw,.85rem); letter-spacing:.14em;
+  font-size:clamp(.68rem,1vw,.85rem); letter-spacing:.14em;
   text-transform:uppercase; color:#D2F0E6; margin:0;
 }
 .how-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.5rem,4vw,2.6rem); color:#fff;
-  margin:clamp(8px,1.4vh,14px) 0 0;
+  font-size:clamp(1.3rem,3.4vw,2.4rem); color:#fff;
+  margin:clamp(6px,1vh,10px) 0 0;
 }
 
 /* ---- Card grid ---- */
 .how-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:clamp(14px,2vw,26px);
+  gap:clamp(12px,1.8vw,22px);
   flex:1;
   min-height:0;
 }
+/* ---- Cards: shortened padding, gaps and font sizes so the
+   whole grid comfortably clears one 16:9 frame ---- */
 .how-card{
   position:relative;
-  border-radius:clamp(14px,1.6vw,20px);
-  padding:clamp(16px,2.2vh,24px) clamp(14px,1.6vw,20px);
+  border-radius:clamp(12px,1.4vw,18px);
+  padding:clamp(12px,1.8vh,20px) clamp(12px,1.4vw,18px);
   box-shadow:0 8px 24px rgba(0,0,0,.18);
   display:flex;
   flex-direction:column;
@@ -947,8 +985,8 @@ section{padding:88px 0;}
 
 .how-tag{
   font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.6rem,.78vw,.7rem); letter-spacing:.1em;
-  text-transform:uppercase; margin:0 0 clamp(4px,.8vh,8px);
+  font-size:clamp(.58rem,.74vw,.66rem); letter-spacing:.1em;
+  text-transform:uppercase; margin:0 0 clamp(3px,.6vh,6px);
 }
 .how-card--1 .how-tag{ color:#228C68; }
 .how-card--2 .how-tag{ color:#13523D; }
@@ -957,31 +995,31 @@ section{padding:88px 0;}
 
 .how-heading{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(.98rem,1.7vw,1.4rem); color:#0B2B20; margin:0;
+  font-size:clamp(.92rem,1.5vw,1.28rem); color:#0B2B20; margin:0;
 }
 .how-divider{
   height:1px; background:rgba(11,43,32,.22);
-  margin:clamp(8px,1.3vh,13px) 0;
+  margin:clamp(6px,1vh,10px) 0;
 }
 .how-desc{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.7rem,.9vw,.84rem); line-height:1.5;
-  color:#154233; margin:0 0 clamp(10px,1.6vh,16px);
+  font-size:clamp(.68rem,.86vw,.8rem); line-height:1.4;
+  color:#154233; margin:0 0 clamp(6px,1.1vh,12px);
 }
 .how-card--3 .how-desc{ color:#0B2B20; }
 
 .how-points{
   list-style:none; margin:0; padding:0;
-  display:flex; flex-direction:column; gap:clamp(6px,1vh,10px);
+  display:flex; flex-direction:column; gap:clamp(4px,.7vh,7px);
 }
 .how-points li{
-  position:relative; padding-left:16px;
+  position:relative; padding-left:15px;
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.64rem,.8vw,.76rem); color:#0B2B20;
+  font-size:clamp(.6rem,.76vw,.72rem); color:#0B2B20;
 }
 .how-points li::before{
   content:""; position:absolute; left:0; top:.5em;
-  width:6px; height:6px; border-radius:50%; background:#228C68;
+  width:5px; height:5px; border-radius:50%; background:#228C68;
 }
 .how-card--2 .how-points li::before,
 .how-card--3 .how-points li::before{ background:#0B2B20; }
@@ -989,11 +1027,11 @@ section{padding:88px 0;}
 /* ---- Icon badge (the "interlocking" dark tile from the SVG) ---- */
 .how-icon-anchor{
   align-self:flex-end;
-  margin-top:clamp(10px,1.6vh,16px);
-  width:clamp(38px,4.4vw,54px);
-  height:clamp(38px,4.4vw,54px);
+  margin-top:clamp(6px,1.1vh,12px);
+  width:clamp(30px,3.6vw,42px);
+  height:clamp(30px,3.6vw,42px);
   background:#0B2B20;
-  border-radius:clamp(10px,1.2vw,16px);
+  border-radius:clamp(8px,1vw,12px);
   display:flex; align-items:center; justify-content:center;
   box-shadow:0 6px 16px rgba(0,0,0,.25);
   flex-shrink:0;
@@ -1001,7 +1039,7 @@ section{padding:88px 0;}
 .how-icon-anchor svg{ width:52%; height:52%; }
 
 @media (max-width:900px){
-  .how-cinema{ height:auto; min-height:100vh; }
+  .how-cinema{ height:auto; min-height:calc(100vh - var(--header-h)); }
   .how-frame{ height:auto; max-height:none; max-width:none; padding:56px 24px; }
   .how-grid{ grid-template-columns:repeat(2,1fr); }
 }
