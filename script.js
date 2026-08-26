@@ -232,6 +232,45 @@ function setupNav() {
   nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
 }
 
+function setupHeaderScroll() {
+  const header = document.querySelector(".site-header");
+  const nav = document.getElementById("mainNav");
+  if (!header) return;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+  const threshold = 6;     // ignore tiny scroll jitters
+  const revealZone = 80;   // always show header near the very top
+
+  function onScroll() {
+    const currentY = window.scrollY;
+    const diff = currentY - lastY;
+
+    // don't hide the header while the mobile menu is open
+    const menuOpen = nav && nav.classList.contains("open");
+
+    if (currentY <= revealZone || menuOpen) {
+      header.classList.remove("header-hidden");
+    } else if (diff > threshold) {
+      // scrolling down
+      header.classList.add("header-hidden");
+    } else if (diff < -threshold) {
+      // scrolling up
+      header.classList.remove("header-hidden");
+    }
+
+    lastY = currentY;
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
 function setupFaq() {
   document.querySelectorAll(".faq-item").forEach(item => {
     const q = item.querySelector(".faq-q");
@@ -319,6 +358,7 @@ Message: ${d.message || "-"}`;
 
 document.addEventListener("DOMContentLoaded", () => {
   setupNav();
+  setupHeaderScroll();
   setupFaq();
   setupWhatsapp();
   setupYear();

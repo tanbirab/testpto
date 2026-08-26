@@ -104,6 +104,10 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 .site-header{
   position:sticky; top:0; z-index:100;
   background:var(--header-bg);
+  transition:transform .32s ease;
+}
+.site-header.header-hidden{
+  transform:translateY(-100%);
 }
 .site-header .container{
   display:flex; align-items:center; justify-content:space-between;
