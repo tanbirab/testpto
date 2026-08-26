@@ -626,6 +626,7 @@ section{padding:88px 0;}
   justify-content:center;
   padding:clamp(56px,7vw,88px) 0;
 }
+.boards-cinema{ background:#22588C; }
 .boards-frame,
 .how-frame,
 .why-frame{
