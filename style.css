@@ -28,13 +28,13 @@
   --whatsapp:#25d366;
   --whatsapp-dark:#1fb955;
 
-  /* new brand palette: dark-green header + matching hero */
-  --header-bg:#4E860F;
+  /* new brand palette: blue header + matching hero */
+  --header-bg:#22588C;
   --header-text:#FFFFFF;
   --accent-green:#159447;
   --accent-green-dark:#0f7a3a;
 
-  --hero-bg:#4E860F;
+  --hero-bg:#22588C;
   --hero-heading:#FFFFFF;
   --hero-body:rgba(255,255,255,.82);
 
