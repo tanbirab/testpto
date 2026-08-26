@@ -411,14 +411,75 @@ section{padding:88px 0;}
   .list-row{grid-template-columns:1fr;}
 }
 
-/* -------------------- areas -------------------- */
-.area-list{
-  display:flex; flex-wrap:wrap; gap:0;
-  border-top:1px solid var(--line); border-left:1px solid var(--line);
+/* ============================================================
+   AREAS WE SERVE — cinematic full-bleed section
+   Rebuilt from areas_we_serve_section.svg: radial green glow
+   background, white location pills with inline pin icons, a
+   dark "More on request" CTA pill. Sized with min-height (not a
+   hard height) so it can never clip, and pills wrap via flexbox
+   instead of the SVG's fixed pixel grid — same robust pattern
+   used by the other cinematic sections on this page.
+   ============================================================ */
+.areas-cinema{
+  position:relative;
+  min-height:calc(100vh - var(--header-h));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(56px,7vw,88px) 0;
+  background:radial-gradient(120% 120% at 50% 40%, #2DA97F 0%, #228C68 70%);
 }
-.area-list span{
-  padding:12px 20px; font-size:.88rem; color:var(--ink-soft);
-  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+.areas-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(32px,5vh,52px);
+}
+.areas-header{ max-width:640px; }
+.areas-eyebrow{
+  display:inline-block;
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#E2F7F0;
+  background:rgba(255,255,255,.15);
+  padding:7px 18px; border-radius:999px;
+  margin:0 0 16px;
+}
+.areas-title{
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(1.8rem,4vw,2.7rem);
+  color:#FFFFFF; margin:0; line-height:1.15;
+}
+.areas-pills{
+  display:flex; flex-wrap:wrap;
+  gap:clamp(10px,1.4vw,16px);
+}
+.area-pill{
+  display:inline-flex; align-items:center; gap:10px;
+  background:#FFFFFF;
+  border-radius:999px;
+  padding:clamp(12px,1.6vw,15px) clamp(18px,2.2vw,24px);
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(.82rem,1.05vw,.94rem);
+  color:#0B2B20;
+  white-space:nowrap;
+}
+.area-pin{ width:18px; height:18px; flex:none; fill:#228C68; }
+.area-pill--cta{
+  background:#0B2B20;
+  color:#FFFFFF;
+  font-weight:800;
+  border:1.5px solid rgba(255,255,255,.3);
+}
+.area-plus{ width:18px; height:18px; flex:none; }
+
+@media (max-width:640px){
+  .areas-cinema{ min-height:0; }
+  .areas-pills{ gap:10px; }
+  .area-pill{ padding:11px 16px; font-size:.82rem; }
 }
 
 /* -------------------- testimonials -------------------- */
@@ -601,8 +662,7 @@ section{padding:88px 0;}
   .header-cta .btn-lg span.wa-label{display:none;}
   .header-cta .btn-lg{padding:10px; border-radius:50%;}
   .header-cta .btn-lg svg{width:19px; height:19px;}
-  .row-list, .area-list{border-left:none;}
-  .area-list span{padding:10px 14px; font-size:.82rem;}
+  .row-list{border-left:none;}
   .footer-top{grid-template-columns:1fr; gap:30px;}
   .wa-float{width:50px; height:50px; right:16px; bottom:16px;}
   .wa-float svg{width:24px; height:24px;}

@@ -331,17 +331,76 @@
   </div>
 </section>
 
-<!-- AREAS -->
-<section class="bg-alt">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Areas We Serve</p>
-      <h2>Across West Bengal</h2>
+<!-- AREAS WE SERVE — cinematic full-bleed section, rebuilt from the
+     uploaded areas_we_serve_section.svg (radial green glow, white
+     location pills, dark "More on request" CTA pill). Fluid HTML/CSS
+     with inline <svg> pin icons rather than a static raster/vector
+     image, so type and spacing scale smoothly via clamp() and the
+     section never clips — same principle as the other cinematic
+     sections on this page. -->
+<section id="areas" class="areas-cinema">
+  <div class="areas-frame">
+    <div class="areas-header">
+      <p class="areas-eyebrow">Areas We Serve</p>
+      <h2 class="areas-title">Across West Bengal</h2>
     </div>
-    <div class="area-list">
-      <span>Salt Lake</span><span>New Town</span><span>Ballygunge</span><span>Behala</span><span>Garia</span>
-      <span>Howrah</span><span>Dum Dum</span><span>Rajarhat</span><span>Tollygunge</span><span>Jadavpur</span>
-      <span>Durgapur</span><span>Asansol</span><span>Siliguri</span><span>More on request</span>
+    <div class="areas-pills">
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Salt Lake</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>New Town</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Ballygunge</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Behala</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Garia</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Howrah</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Dum Dum</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Rajarhat</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Tollygunge</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Jadavpur</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Durgapur</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Asansol</span>
+      </div>
+      <div class="area-pill">
+        <svg class="area-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <span>Siliguri</span>
+      </div>
+      <div class="area-pill area-pill--cta">
+        <svg class="area-plus" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m-7-7h14" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round"/></svg>
+        <span>More on request</span>
+      </div>
     </div>
   </div>
 </section>
