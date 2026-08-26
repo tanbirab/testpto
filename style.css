@@ -324,8 +324,9 @@ section{padding:88px 0;}
   position:relative;
   overflow:hidden;
   background:radial-gradient(circle at 40% 30%, #2DA97F 0%, #228C68 60%, #18694E 100%);
+  padding:clamp(56px,7vw,88px) 0;
 }
-.story-head{max-width:600px; margin:0 0 44px;}
+.story-head{max-width:600px; margin:0 0 36px;}
 .story-eyebrow{color:rgba(255,255,255,.8);}
 .story-heading{
   color:#FFFFFF;
@@ -335,11 +336,11 @@ section{padding:88px 0;}
 
 .story-card{
   position:relative;
-  max-width:960px;
+  max-width:1120px;
   background:linear-gradient(135deg, #EBF7F2 0%, #DDF1E9 100%);
   border-radius:24px;
   box-shadow:0 10px 40px rgba(0,0,0,.2);
-  padding:44px 48px;
+  padding:40px 44px;
 }
 .story-block + .story-block{
   margin-top:24px; padding-top:24px;
@@ -358,36 +359,28 @@ section{padding:88px 0;}
   max-width:640px;
 }
 
-/* decorative notch + icon block, matching the source artwork — desktop only */
-.story-icon{
-  display:none;
-  position:absolute; right:24px; bottom:24px;
-  width:88px; height:96px;
-  border-radius:16px;
-  background:#0B1E30;
-  align-items:center; justify-content:center;
-}
-.story-icon svg{width:30px; height:30px;}
-.story-ribbon{
-  display:none;
-  position:absolute; height:36px;
-  clip-path:polygon(0% 0%, 76% 0%, 100% 50%, 76% 100%, 0% 100%);
-  opacity:.85;
-}
-.story-ribbon-red{
-  right:158px; bottom:82px; width:120px;
-  background:linear-gradient(90deg, #E5242A, #981E5B);
-}
-.story-ribbon-blue{
-  right:134px; bottom:52px; width:138px;
-  background:linear-gradient(90deg, #4A2E80, #213E9B);
+/* laptop and up: lay the three blocks side by side so the card is wide
+   and short rather than tall — fits comfortably in one screen and reads
+   as a wide, cinematic panel instead of a long scroll. */
+@media (min-width:900px){
+  .story-head{max-width:none; text-align:center; margin-left:auto; margin-right:auto;}
+  .story-card{
+    padding:48px;
+  }
+  .story-copy{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    column-gap:40px;
+  }
+  .story-block + .story-block{
+    margin-top:0; padding-top:0;
+    border-top:none;
+    border-left:1px solid rgba(14,61,45,.12);
+    padding-left:40px;
+  }
+  .story-block p{max-width:none;}
 }
 
-@media (min-width:860px){
-  .story-card{padding-right:190px;}
-  .story-icon{display:flex;}
-  .story-ribbon{display:block;}
-}
 @media (max-width:720px){
   .story-card{padding:32px 26px;}
   .story-block + .story-block{margin-top:20px; padding-top:20px;}
