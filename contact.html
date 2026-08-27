@@ -29,19 +29,88 @@
   </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" style="padding-bottom:70px;">
-  <div class="container">
-    <div class="hero-copy" style="max-width:640px;">
-      <p class="eyebrow">Contact</p>
-      <h1>Let's talk about your child's tuition.</h1>
-      <p class="lead">WhatsApp is the fastest way to reach us — most enquiries get a reply within the hour.</p>
+<!-- HERO — cinematic full-bleed 16:9 section, rebuilt from the uploaded
+     CONTACT_PAGE.svg (solid #22588C canvas, a lifted white→#F4FAF7
+     glass "Contact Details" card with inline SVG icons matching the
+     source exactly, and a circular down-arrow prompt pointing at the
+     WhatsApp form below). Fluid type via clamp(), sized the same way
+     as every other cinematic section on the site so it fits a single
+     screen like the homepage's hero/FAQ do. -->
+<section class="hero hero-contact hero-full">
+  <div class="hero-contact-frame">
+    <p class="hero-contact-eyebrow">Reach Us</p>
+    <h1 class="hero-contact-title">Let's talk about your child's tuition.</h1>
+    <p class="hero-contact-lead">WhatsApp is the <strong>fastest</strong> way to reach us — most enquiries get a response within the hour.</p>
+
+    <div class="hero-contact-card">
+      <p class="hero-contact-card-eyebrow">Direct Contacts</p>
+      <h2 class="hero-contact-card-title">Contact Details</h2>
+
+      <div class="hero-contact-items">
+        <div class="hero-contact-item">
+          <span class="hero-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" width="44" height="44">
+              <circle cx="22" cy="22" r="22" fill="#228C68" fill-opacity="0.12"/>
+              <path d="M22 12a10 10 0 0 0-8.5 15.3L12 31l3.9-1A10 10 0 1 0 22 12z" fill="#228C68"/>
+            </svg>
+          </span>
+          <div>
+            <p class="hero-contact-label">WhatsApp: <span>8368003189</span></p>
+            <p class="hero-contact-sub">Fastest response rate for all class &amp; subject inquiries</p>
+          </div>
+        </div>
+
+        <div class="hero-contact-item">
+          <span class="hero-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" width="44" height="44">
+              <circle cx="22" cy="22" r="22" fill="#0E3D2D" fill-opacity="0.08"/>
+              <path d="M13 16h18v12H13z" fill="none" stroke="#0E3D2D" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M13 16l9 6.5 9-6.5" fill="none" stroke="#0E3D2D" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <p class="hero-contact-label">Email: <span>info@tutoria.in</span></p>
+        </div>
+
+        <div class="hero-contact-item">
+          <span class="hero-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" width="44" height="44">
+              <circle cx="22" cy="22" r="22" fill="#0E3D2D" fill-opacity="0.08"/>
+              <path d="M22 11a6.5 6.5 0 0 0-6.5 6.5c0 4.8 6.5 11.5 6.5 11.5s6.5-6.7 6.5-11.5A6.5 6.5 0 0 0 22 11zm0 8.8a2.3 2.3 0 1 1 0-4.6 2.3 2.3 0 0 1 0 4.6z" fill="#0E3D2D"/>
+            </svg>
+          </span>
+          <p class="hero-contact-label">Service Area: <span>West Bengal — Kolkata and nearby districts</span></p>
+        </div>
+
+        <div class="hero-contact-item">
+          <span class="hero-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 44 44" width="44" height="44">
+              <circle cx="22" cy="22" r="22" fill="#0E3D2D" fill-opacity="0.08"/>
+              <circle cx="22" cy="22" r="9" fill="none" stroke="#0E3D2D" stroke-width="2"/>
+              <path d="M22 17v5h4" stroke="#0E3D2D" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <p class="hero-contact-label">Hours: <span>Mon – Sat, 9:00 AM – 8:00 PM</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-contact-prompt">
+      <p>We prefer WhatsApp, so a WhatsApp form is given below</p>
+      <a href="#contact-form" class="hero-contact-arrow" aria-label="Scroll to the contact form">
+        <svg viewBox="0 0 44 44" width="44" height="44">
+          <circle cx="22" cy="22" r="22" fill="#FFFFFF" fill-opacity="0.15" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="1.5"/>
+          <g stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <line x1="22" y1="12" x2="22" y2="31"/>
+            <polyline points="15,24 22,31 29,24"/>
+          </g>
+        </svg>
+      </a>
     </div>
   </div>
 </section>
 
 <!-- CONTACT DETAILS + FORM -->
-<section class="bg-paper">
+<section class="bg-paper" id="contact-form">
   <div class="container">
     <div class="contact-grid">
 

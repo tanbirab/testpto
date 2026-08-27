@@ -293,6 +293,117 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   }
   .hero-full-image img{height:100%; max-height:52vh;}
 }
+
+/* ============================================================
+   HERO (CONTACT PAGE) — cinematic full-bleed 16:9 section
+   Rebuilt from CONTACT_PAGE.svg: solid #22588C canvas, a lifted
+   white→#F4FAF7 glass "Contact Details" card with literal inline
+   <svg> icons (colors preserved exactly from the source), and a
+   circular down-arrow prompt that scrolls to the WhatsApp form.
+   Fluid type via clamp(); sized with the same min-height:(100vh -
+   header) pattern as every other cinematic section on the site.
+   ============================================================ */
+.hero-contact{
+  min-height:calc(100vh - var(--header-h));
+  display:flex;
+  align-items:center;
+  background:#22588C;
+  padding:clamp(28px,4.5vh,56px) 0;
+}
+.hero-contact-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(6px,1vh,10px);
+}
+.hero-contact-eyebrow{
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#FFFFFF; opacity:.8;
+  margin:0 0 clamp(6px,1vh,10px);
+}
+.hero-contact-title{
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(1.7rem,3.4vw,2.5rem);
+  color:#FFFFFF; margin:0 0 clamp(8px,1.4vh,14px); line-height:1.15;
+  letter-spacing:-.01em;
+  max-width:22ch;
+}
+.hero-contact-lead{
+  font-family:var(--font-body); font-weight:400;
+  font-size:clamp(.95rem,1.25vw,1.1rem); line-height:1.55;
+  color:rgba(255,255,255,.9); margin:0 0 clamp(18px,2.8vh,30px);
+  max-width:56ch;
+}
+.hero-contact-lead strong{ font-weight:700; }
+
+.hero-contact-card{
+  background:linear-gradient(135deg,#FFFFFF,#F4FAF7);
+  border-radius:20px;
+  box-shadow:0 20px 44px rgba(0,0,0,.25);
+  padding:clamp(20px,2.6vw,34px) clamp(22px,3vw,44px);
+}
+.hero-contact-card-eyebrow{
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.6rem,.8vw,.68rem); letter-spacing:.12em;
+  text-transform:uppercase; color:#0E3D2D; opacity:.6;
+  margin:0 0 4px;
+}
+.hero-contact-card-title{
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(1.15rem,1.8vw,1.45rem);
+  color:#0E3D2D; margin:0 0 clamp(10px,1.6vh,16px); line-height:1.25;
+}
+.hero-contact-items{ display:flex; flex-direction:column; }
+.hero-contact-item{
+  display:flex; align-items:flex-start; gap:16px;
+  padding:clamp(11px,1.5vh,15px) 0;
+}
+.hero-contact-item:not(:first-child){
+  border-top:1.5px solid rgba(14,61,45,.08);
+}
+.hero-contact-icon{ flex:none; width:clamp(32px,2.6vw,40px); height:clamp(32px,2.6vw,40px); }
+.hero-contact-icon svg{ display:block; width:100%; height:100%; }
+.hero-contact-label{
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.9rem,1.05vw,1.05rem); color:#0E3D2D;
+  margin:0; line-height:1.4;
+}
+.hero-contact-label span{ font-weight:500; color:#1E4D3C; }
+.hero-contact-sub{
+  font-family:var(--font-body); font-weight:400;
+  font-size:clamp(.72rem,.8vw,.78rem); color:#0E3D2D; opacity:.7;
+  margin:2px 0 0;
+}
+
+.hero-contact-prompt{
+  display:flex; flex-direction:column; align-items:center;
+  gap:clamp(10px,1.6vh,16px);
+  margin-top:clamp(18px,2.8vh,30px);
+  text-align:center;
+}
+.hero-contact-prompt p{
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(.92rem,1.2vw,1.1rem); color:#FFFFFF; margin:0;
+}
+.hero-contact-arrow{
+  width:clamp(36px,2.8vw,44px); height:clamp(36px,2.8vw,44px);
+  display:block; transition:transform .2s ease;
+}
+.hero-contact-arrow svg{ display:block; width:100%; height:100%; }
+.hero-contact-arrow:hover{ transform:translateY(4px); }
+
+@media (max-width:1000px){
+  .hero-contact{ min-height:auto; padding:6vh 0 5vh; }
+  .hero-contact-title{ max-width:none; }
+  .hero-contact-item{ gap:12px; }
+}
+@media (max-width:640px){
+  .hero-contact-item{ flex-wrap:wrap; }
+}
 @media (max-width:640px){
   .hero-full-grid{
     grid-template-rows:auto auto;
