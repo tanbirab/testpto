@@ -319,17 +319,18 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
    column layout/content differ, to match this SVG's composition.
    ============================================================ */
 .hero-tutor{
-  background:#1D5B8C; /* exact canvas color from the uploaded SVG */
+  background:#22588C; /* brand background color */
 }
 .hero-tutor-grid{
   display:grid;
   grid-template-columns:minmax(300px,46%) 1fr;
   align-items:center;
-  gap:clamp(28px,4.5vw,64px);
+  gap:clamp(24px,4vw,56px);
   max-width:var(--container);
   margin:0 auto;
-  padding:clamp(32px,5vh,64px) 32px;
+  padding:clamp(20px,3.6vh,44px) 32px;
   min-height:calc(100vh - var(--header-h));
+  max-height:calc(100vh - var(--header-h));
 }
 
 /* ---- Left: glass feature card ---- */
@@ -337,13 +338,13 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   background:linear-gradient(135deg,#F4FAF7,#E2F3EC);
   border-radius:24px;
   box-shadow:0 22px 50px rgba(0,0,0,.28);
-  padding:clamp(28px,3.2vw,45px);
+  padding:clamp(22px,2.8vw,36px);
 }
 .hero-tutor-card-eyebrow{
   font-family:var(--font-body); font-weight:800;
   font-size:clamp(.66rem,.9vw,.75rem); letter-spacing:.13em;
   text-transform:uppercase; color:#0E3D2D; opacity:.7;
-  margin:0 0 12px;
+  margin:0 0 clamp(10px,1.6vh,16px);
 }
 .hero-tutor-card-title{
   font-family:var(--font-display); font-weight:800;
@@ -352,23 +353,23 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 }
 .hero-tutor-features{ display:flex; flex-direction:column; }
 .hero-tutor-feature{
-  display:flex; gap:16px;
-  padding:clamp(16px,2vh,20px) 0;
+  display:flex; gap:14px;
+  padding:clamp(10px,1.5vh,15px) 0;
 }
 .hero-tutor-feature:not(:first-child){
   border-top:1px solid rgba(14,61,45,.1);
 }
 .hero-tutor-dot{
-  flex:none; width:10px; height:10px; border-radius:50%;
-  background:#0E3D2D; margin-top:7px;
+  flex:none; width:9px; height:9px; border-radius:50%;
+  background:#0E3D2D; margin-top:6px;
 }
 .hero-tutor-feature h3{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(.98rem,1.2vw,1.15rem); color:#0E3D2D;
-  margin:0 0 6px; line-height:1.3;
+  font-size:clamp(.92rem,1.1vw,1.05rem); color:#0E3D2D;
+  margin:0 0 5px; line-height:1.3;
 }
 .hero-tutor-feature p{
-  font-family:var(--font-body); font-size:.9rem; line-height:1.55;
+  font-family:var(--font-body); font-size:.86rem; line-height:1.48;
   color:#1E4D3C; margin:0;
 }
 
@@ -388,6 +389,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   .hero-tutor-grid{
     grid-template-columns:1fr;
     min-height:auto;
+    max-height:none;
     padding:5vh clamp(24px,6vw,48px) 6vh;
   }
   .hero-tutor-text{ order:1; }
