@@ -17,7 +17,6 @@
     </a>
     <nav class="main-nav" id="mainNav">
       <a href="index.html" class="active">Home</a>
-      <a href="about.html">About</a>
       <a href="join-as-tutor.html">Join as Tutor</a>
       <a href="contact.html">Contact</a>
       <a href="review.html">Leave a Review</a>
@@ -424,19 +423,26 @@
   </div>
 </section>
 
-<!-- FAQ -->
-<section id="faq" class="bg-alt">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">FAQs</p>
-      <h2>Common questions</h2>
+<!-- FAQ — cinematic full-bleed section, rebuilt from the uploaded
+     faq_section.svg (solid green canvas, translucent dividers, a
+     minimal plus/minus icon, and an expanded panel that lifts into
+     a white/mint card with a shadow). Fluid HTML/CSS with a
+     CSS-drawn icon rather than a static image, so type scales via
+     clamp() and the section never clips. All new rules are scoped
+     under .faq-cinema so join-as-tutor.html's plain FAQ (which
+     reuses the same .faq/.faq-item/.faq-q classes) is untouched. -->
+<section id="faq" class="faq-cinema">
+  <div class="faq-frame">
+    <div class="faq-header">
+      <p class="faq-eyebrow">FAQs</p>
+      <h2 class="faq-title">Common questions</h2>
     </div>
     <div class="faq">
-      <div class="faq-item"><button class="faq-q">Which boards do you cover?<span class="plus">+</span></button><div class="faq-a"><p>CBSE, ICSE, the WB Board (WBBSE and WBCHSE), and select IGCSE or IB requests on a case-by-case basis.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Is the first class really free?<span class="plus">+</span></button><div class="faq-a"><p>Yes. Every match starts with a free demo class so you can evaluate the tutor before paying anything.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Can I request a different tutor?<span class="plus">+</span></button><div class="faq-a"><p>Absolutely — we offer a free replacement anytime you are not fully satisfied.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Do you offer online classes too?<span class="plus">+</span></button><div class="faq-a"><p>Our core offering is home tutoring, but we can arrange online sessions where preferred.</p></div></div>
-      <div class="faq-item"><button class="faq-q">How do I get started?<span class="plus">+</span></button><div class="faq-a"><p>Tap "WhatsApp Us" and tell us your child's class, subject and area — we will take it from there.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Which boards do you cover?<span class="plus" aria-hidden="true"></span></button><div class="faq-a"><p>CBSE, ICSE, the WB Board (WBBSE and WBCHSE), and select IGCSE or IB requests on a case-by-case basis.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Is the first class really free?<span class="plus" aria-hidden="true"></span></button><div class="faq-a"><p>Yes. Every match starts with a free demo class so you can evaluate the tutor before paying anything.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Can I request a different tutor?<span class="plus" aria-hidden="true"></span></button><div class="faq-a"><p>Absolutely — we offer a free replacement anytime you are not fully satisfied.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Do you offer online classes too?<span class="plus" aria-hidden="true"></span></button><div class="faq-a"><p>Our core offering is home tutoring, but we can arrange online sessions where preferred.</p></div></div>
+      <div class="faq-item"><button class="faq-q">How do I get started?<span class="plus" aria-hidden="true"></span></button><div class="faq-a"><p>Tap "WhatsApp Us" and tell us your child's class, subject and area — we will take it from there.</p></div></div>
     </div>
   </div>
 </section>
@@ -451,7 +457,6 @@
       <div class="footer-col">
         <h4>Site</h4>
         <a href="index.html">Home</a>
-        <a href="about.html">About</a>
         <a href="join-as-tutor.html">Join as Tutor</a>
         <a href="contact.html">Contact</a>
         <a href="review.html">Leave a Review</a>

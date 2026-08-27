@@ -439,13 +439,9 @@ section{padding:88px 0;}
 }
 .areas-header{ max-width:640px; }
 .areas-eyebrow{
-  display:inline-block;
-  font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
-  text-transform:uppercase; color:#E2F7F0;
-  background:rgba(255,255,255,.15);
-  padding:7px 18px; border-radius:999px;
-  margin:0 0 16px;
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(.68rem,1vw,.85rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#E2F7F0; margin:0 0 16px;
 }
 .areas-title{
   font-family:var(--font-display); font-weight:800;
@@ -512,13 +508,9 @@ section{padding:88px 0;}
 }
 .testimonials-header{ max-width:640px; }
 .testimonials-eyebrow{
-  display:inline-block;
-  font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
-  text-transform:uppercase; color:#EBF3FA;
-  background:rgba(255,255,255,.12);
-  padding:7px 18px; border-radius:999px;
-  margin:0 0 16px;
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(.68rem,1vw,.85rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#EBF3FA; margin:0 0 16px;
 }
 .testimonials-title{
   font-family:var(--font-display); font-weight:800;
@@ -585,6 +577,103 @@ section{padding:88px 0;}
 .faq-a{max-height:0; overflow:hidden; transition:max-height .25s ease;}
 .faq-a p{padding-bottom:22px; color:var(--ink-soft); font-size:.94rem; max-width:620px;}
 
+/* ============================================================
+   FAQ — cinematic full-bleed section (index.html only)
+   Rebuilt from faq_section.svg: solid green canvas, translucent
+   white divider lines, a CSS-drawn plus/minus icon, and an
+   expanded item that lifts into a white/mint rounded card with a
+   shadow. Sized with min-height (not a hard height) so it can
+   never clip. Every rule here is scoped under .faq-cinema so the
+   plain .faq/.faq-item classes above (used by join-as-tutor.html)
+   are completely unaffected.
+   ============================================================ */
+.faq-cinema{
+  position:relative;
+  min-height:calc(100vh - var(--header-h));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(56px,7vw,88px) 0;
+  background:#228C68;
+}
+.faq-cinema .faq-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(32px,5vh,52px);
+}
+.faq-cinema .faq-header{ max-width:640px; }
+.faq-cinema .faq-eyebrow{
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#FFFFFF; opacity:.85;
+  margin:0 0 10px;
+}
+.faq-cinema .faq-title{
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  color:#FFFFFF; margin:0; line-height:1.15;
+}
+
+.faq-cinema .faq{ max-width:none; }
+.faq-cinema .faq-item{
+  border-bottom:none;
+  border-top:1.5px solid rgba(255,255,255,.25);
+  border-radius:16px;
+  transition:background .25s ease, box-shadow .25s ease, margin .25s ease;
+}
+.faq-cinema .faq-item:first-child{ border-top:1.5px solid rgba(255,255,255,.25); }
+.faq-cinema .faq-item:last-child{ border-bottom:1.5px solid rgba(255,255,255,.25); }
+.faq-cinema .faq-item.open{
+  border-top-color:transparent;
+  background:#EBF7F2;
+  box-shadow:0 14px 30px rgba(0,0,0,.2);
+  margin:6px 0;
+}
+.faq-cinema .faq-item.open + .faq-item{ border-top-color:transparent; }
+
+.faq-cinema .faq-q{
+  padding:clamp(20px,2.6vh,26px) clamp(4px,1vw,6px);
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(1rem,1.4vw,1.25rem); color:#FFFFFF;
+  transition:color .2s ease, padding .2s ease;
+}
+.faq-cinema .faq-item.open .faq-q{
+  color:#0E3D2D;
+  padding-left:clamp(20px,2.2vw,28px);
+  padding-right:clamp(20px,2.2vw,28px);
+}
+
+/* CSS-drawn plus/minus icon — mirrors the SVG's two crossing
+   lines exactly (plus when closed, a single line when open). */
+.faq-cinema .faq-q .plus{
+  position:relative; flex:none;
+  width:20px; height:20px;
+  font-size:0; color:transparent; transform:none;
+}
+.faq-cinema .faq-q .plus::before,
+.faq-cinema .faq-q .plus::after{
+  content:""; position:absolute; background:#FFFFFF; border-radius:2px;
+  transition:transform .2s ease, background .2s ease;
+}
+.faq-cinema .faq-q .plus::before{ top:0; left:9px; width:2.5px; height:20px; }
+.faq-cinema .faq-q .plus::after{ top:9px; left:0; width:20px; height:2.5px; }
+.faq-cinema .faq-item.open .plus::before{ transform:scaleY(0); }
+.faq-cinema .faq-item.open .plus::after{ background:#0E3D2D; }
+
+.faq-cinema .faq-a p{
+  padding:0 clamp(20px,2.2vw,28px) clamp(22px,2.6vh,30px);
+  font-family:var(--font-body);
+  font-size:clamp(.9rem,1vw,.98rem); line-height:1.65;
+  color:#1E4D3C; max-width:900px;
+}
+
+@media (max-width:640px){
+  .faq-cinema{ min-height:0; }
+}
+
 /* -------------------- CTA band -------------------- */
 .cta-band{
   background:var(--pine-950); color:#fff;
@@ -595,7 +684,7 @@ section{padding:88px 0;}
 .cta-band p{color:rgba(255,255,255,.62); margin-top:8px;}
 
 /* -------------------- footer -------------------- */
-.site-footer{background:var(--pine-950); color:rgba(255,255,255,.8); padding:60px 0 26px;}
+.site-footer{background:var(--header-bg); color:rgba(255,255,255,.8); padding:60px 0 26px;}
 .footer-top{
   display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px;
   padding-bottom:40px; border-bottom:1px solid var(--line-on-dark);
