@@ -1073,21 +1073,17 @@ section{padding:88px 0;}
   padding:clamp(48px,7vh,84px) 0;
 }
 .contact-form-frame{
-  max-width:var(--container);
   margin:0 auto;
   padding:0 32px;
   width:100%;
 }
-.contact-form-svg{ width:100%; height:auto; display:block; }
-.contact-form-svg-mobile{ display:none; }
+.contact-form-cinema .form-note{ text-align:center; }
 @media (max-width:1000px){
   .contact-form-cinema{ padding:7vh 0; }
 }
 @media (max-width:640px){
   .contact-form-cinema{ padding:8vh 0; }
   .contact-form-frame{ padding:0 18px; }
-  .contact-form-svg{ display:none; }
-  .contact-form-svg-mobile{ display:block; }
 }
 
 /* -------------------- forms -------------------- */
