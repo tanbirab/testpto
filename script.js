@@ -248,8 +248,32 @@ function setupNav() {
   const toggle = document.getElementById("navToggle");
   const nav = document.getElementById("mainNav");
   if (!toggle || !nav) return;
-  toggle.addEventListener("click", () => nav.classList.toggle("open"));
-  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => nav.classList.remove("open")));
+  function setOpen(isOpen) {
+    nav.classList.toggle("open", isOpen);
+    toggle.classList.toggle("open", isOpen);
+    document.body.classList.toggle("nav-open", isOpen);
+  }
+  toggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+  nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setOpen(false)));
+}
+
+/* ---------- scroll reveal: fade + blur elements up as they enter view ---------- */
+function setupReveal() {
+  const els = document.querySelectorAll(".reveal");
+  if (!els.length) return;
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("in-view"));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+  els.forEach(el => io.observe(el));
 }
 
 function setupHeaderScroll() {
@@ -405,5 +429,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupTermsModal();
   setupReviewForm();
   setupContactForm();
+  setupReveal();
   renderTestimonials();
 });
