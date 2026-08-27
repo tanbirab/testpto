@@ -572,78 +572,78 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   display:grid;
   grid-template-columns:minmax(280px,1fr) minmax(320px,49%);
   align-items:center;
-  gap:clamp(28px,4.5vw,64px);
+  gap:clamp(24px,4vw,56px);
   max-width:var(--container);
   margin:0 auto;
-  padding:clamp(20px,3.6vh,44px) 32px;
+  padding:clamp(16px,2.6vh,32px) 32px;
   min-height:calc(100vh - var(--header-h));
 }
 
 /* ---- Left: hero messaging ---- */
 .hero-review-eyebrow{
   font-family:var(--font-body); font-weight:800;
-  font-size:clamp(.7rem,.9vw,.8rem); letter-spacing:.18em;
+  font-size:clamp(.68rem,.85vw,.76rem); letter-spacing:.18em;
   text-transform:uppercase; color:#fff; opacity:.75;
-  margin:0 0 clamp(12px,2vh,18px);
+  margin:0 0 clamp(8px,1.4vh,14px);
 }
 .hero-review-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(2rem,3.4vw,3.4rem); line-height:1.12;
+  font-size:clamp(1.7rem,2.7vw,2.6rem); line-height:1.12;
   letter-spacing:-.015em; color:#fff;
-  margin:0 0 clamp(16px,2.6vh,24px); max-width:11ch;
+  margin:0 0 clamp(12px,1.8vh,18px); max-width:11ch;
 }
 .hero-review-title span{ color:#25D366; }
 .hero-review-lead{
-  font-family:var(--font-body); font-size:clamp(.96rem,1.15vw,1.15rem);
-  line-height:1.6; color:#E2E8F0; opacity:.9;
-  max-width:38ch; margin:0 0 clamp(24px,4vh,40px);
+  font-family:var(--font-body); font-size:clamp(.88rem,1vw,1rem);
+  line-height:1.55; color:#E2E8F0; opacity:.9;
+  max-width:38ch; margin:0 0 clamp(16px,2.6vh,26px);
 }
 .hero-review-trust{
   display:flex; align-items:center; gap:12px; flex-wrap:wrap;
 }
 .hero-review-stars{
-  font-size:clamp(1.05rem,1.3vw,1.35rem); color:#F59E0B; letter-spacing:1px;
+  font-size:clamp(.95rem,1.1vw,1.15rem); color:#F59E0B; letter-spacing:1px;
 }
 .hero-review-trust span:last-child{
   font-family:var(--font-body); font-weight:600;
-  font-size:clamp(.82rem,.95vw,.95rem); color:#fff; opacity:.95;
+  font-size:clamp(.78rem,.85vw,.88rem); color:#fff; opacity:.95;
 }
 
 /* ---- Right: glass form card ---- */
 .hero-review-card{
   background:linear-gradient(135deg, rgba(255,255,255,.97), rgba(255,255,255,.92));
-  border-radius:clamp(18px,1.6vw,28px);
-  box-shadow:0 24px 56px rgba(0,0,0,.25);
-  padding:clamp(24px,2.6vw,44px);
+  border-radius:clamp(16px,1.4vw,24px);
+  box-shadow:0 20px 48px rgba(0,0,0,.25);
+  padding:clamp(18px,2vw,32px);
 }
 .hero-review-card-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.15rem,1.5vw,1.4rem); color:#0F172A;
-  margin:0 0 4px;
+  font-size:clamp(1.05rem,1.3vw,1.25rem); color:#0F172A;
+  margin:0 0 3px;
 }
 .hero-review-card-sub{
-  font-family:var(--font-body); font-size:clamp(.8rem,.9vw,.88rem);
-  color:#64748B; margin:0 0 clamp(18px,2.4vh,26px);
+  font-family:var(--font-body); font-size:clamp(.76rem,.85vw,.84rem);
+  color:#64748B; margin:0 0 clamp(12px,1.8vh,18px);
 }
 .hero-review-row{
   display:grid; grid-template-columns:1fr 1fr;
-  gap:clamp(14px,1.4vw,20px);
-  margin-bottom:clamp(14px,1.8vh,20px);
+  gap:clamp(12px,1.2vw,18px);
+  margin-bottom:clamp(10px,1.3vh,14px);
 }
-.hero-review-field{ margin-bottom:clamp(14px,1.8vh,20px); }
+.hero-review-field{ margin-bottom:clamp(10px,1.3vh,14px); }
 .hero-review-row .hero-review-field{ margin-bottom:0; }
 .hero-review-field label{
   display:block; font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.78rem,.85vw,.86rem); color:#1E293B;
-  margin-bottom:8px;
+  font-size:clamp(.74rem,.8vw,.82rem); color:#1E293B;
+  margin-bottom:6px;
 }
 .hero-review-field input,
 .hero-review-field select,
 .hero-review-field textarea{
   width:100%; font-family:var(--font-body);
-  font-size:clamp(.84rem,.92vw,.94rem); color:#1E293B;
-  background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:12px;
-  padding:0 16px; height:clamp(42px,4.6vh,52px);
+  font-size:clamp(.8rem,.88vw,.9rem); color:#1E293B;
+  background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:10px;
+  padding:0 14px; height:clamp(36px,3.6vh,44px);
   transition:border-color .15s, box-shadow .15s;
 }
 .hero-review-field input::placeholder,
@@ -655,28 +655,28 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 }
 .hero-review-field select{
   appearance:none; -webkit-appearance:none; cursor:pointer;
-  font-weight:600; padding-right:40px;
+  font-weight:600; padding-right:36px;
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'><path d='M5 7.5l5 5 5-5' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
-  background-repeat:no-repeat; background-position:right 14px center; background-size:14px;
+  background-repeat:no-repeat; background-position:right 12px center; background-size:13px;
 }
 .hero-review-field-message textarea{
-  height:clamp(90px,12vh,150px); border-radius:14px; padding:14px 16px; resize:vertical;
+  height:clamp(56px,7vh,84px); border-radius:12px; padding:10px 14px; resize:vertical;
 }
 .hero-review-submit{
-  display:block; width:100%; height:clamp(46px,5.2vh,58px);
+  display:block; width:100%; height:clamp(38px,4.2vh,48px);
   border-radius:999px; border:none; cursor:pointer;
   background:linear-gradient(90deg,#1E293B,#0F172A);
   color:#fff; font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.9rem,1vw,1rem); letter-spacing:.01em;
+  font-size:clamp(.84rem,.92vw,.94rem); letter-spacing:.01em;
   transition:transform .15s ease, box-shadow .15s ease;
-  box-shadow:0 12px 26px rgba(15,23,42,.28);
+  box-shadow:0 10px 22px rgba(15,23,42,.28);
 }
-.hero-review-submit:hover{ transform:translateY(-2px); box-shadow:0 16px 32px rgba(15,23,42,.34); }
+.hero-review-submit:hover{ transform:translateY(-2px); box-shadow:0 14px 28px rgba(15,23,42,.34); }
 .hero-review-note{
-  text-align:center; font-family:var(--font-body); font-size:.78rem;
-  color:#64748B; margin:clamp(14px,2vh,18px) 0 0;
+  text-align:center; font-family:var(--font-body); font-size:.72rem;
+  color:#64748B; margin:clamp(8px,1.3vh,12px) 0 0;
 }
-.hero-review-confirm{ text-align:center; padding:clamp(20px,3vh,32px) 4px; }
+.hero-review-confirm{ text-align:center; padding:clamp(16px,2.4vh,26px) 4px; }
 .hero-review-confirm h3{
   font-family:var(--font-display); font-weight:800; color:#0F172A; margin-bottom:10px;
 }
