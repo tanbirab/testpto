@@ -88,13 +88,13 @@
         </div>
 
         <label class="hero-apply-terms">
-          <input type="checkbox" required>
+          <input type="checkbox" name="terms" id="tutorTerms" required>
           <span class="hero-apply-check" aria-hidden="true">
             <svg viewBox="0 0 16 16" width="11" height="11">
               <path d="M3 8.5l3 3 7-7" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </span>
-          <span>I agree to the <em>Terms &amp; Conditions</em></span>
+          <span>I agree to the <button type="button" class="hero-apply-terms-link" id="openTerms">Terms &amp; Conditions</button></span>
         </label>
 
         <button type="submit" class="hero-apply-submit">Submit Application</button>
@@ -102,6 +102,37 @@
     </div>
   </div>
 </section>
+
+<!-- TERMS & CONDITIONS POPUP — opened from the "Terms & Conditions" link
+     in the apply-page checkbox. Fixed overlay, scrolls internally,
+     closes via the × button, an outside click, or Escape. Wired to
+     #openTerms / #termsOverlay -> setupTermsModal() in script.js. -->
+<div class="terms-overlay" id="termsOverlay">
+  <div class="terms-modal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+    <button type="button" class="terms-modal-close" id="closeTerms" aria-label="Close">&times;</button>
+    <p class="terms-modal-brand">Tutoria</p>
+    <h2 class="terms-modal-title" id="termsTitle">Terms &amp; Condition</h2>
+    <ol>
+      <li>Teacher will have to pay only 100% of One-Month tuition fees which will be collected in two easy installments (50% + 50%) for each tuition.</li>
+      <li>You are requested to inform us immediately as you start the tuition or receive payment from the guardian.</li>
+      <li>If the guardian asks for Free Demo Class, then you will have to provide the same.</li>
+      <li>The demo class must be at least 45–60mn long, during which you are expected to demonstrate your subject knowledge by teaching a topic from the specified subject.</li>
+      <li>Verify the location, fees, and other details carefully before committing to any tuition. Since it's a service sector, your commitment is crucial—don't back out after agreeing to start.</li>
+    </ol>
+    <div class="terms-modal-divider"></div>
+    <p class="terms-modal-brand">টিউটোরিয়া</p>
+    <h2 class="terms-modal-title">শর্তাবলি</h2>
+    <div class="terms-modal-bengali">
+      <ol>
+        <li>শিক্ষককে প্রতি টিউশনের জন্য এক মাসের সম্পূর্ণ টিউশন ফি-এর ১০০% পরিমাণ পরিষেবা মূল্য প্রদান করতে হবে। এই পরিমাণ দুইটি সহজ কিস্তিতে (৫০% + ৫০%) প্রদান করা যাবে।</li>
+        <li>শিক্ষক টিউশন শুরু করার পরে অথবা অভিভাবকের কাছ থেকে ফি গ্রহণ করার সঙ্গে সঙ্গেই আমাদের অবহিত করা আবশ্যক।</li>
+        <li>যদি অভিভাবক ফ্রি ডেমো ক্লাসের অনুরোধ করেন, তাহলে শিক্ষককে তা প্রদান করতে হবে।</li>
+        <li>ডেমো ক্লাসের সময়কাল অন্তত ৪৫ থেকে ৬০ মিনিট হতে হবে। এই ক্লাস চলাকালীন, শিক্ষক নির্দিষ্ট বিষয়ের একটি টপিক পড়িয়ে তার বিষয়জ্ঞান ও দক্ষতা উপস্থাপন করবেন।</li>
+        <li>টিউশনের স্থান, সম্মানীয় ও অন্যান্য প্রয়োজনীয় তথ্য ভালোভাবে যাচাই করে নেওয়ার পরেই চূড়ান্ত সম্মতি প্রদান করবেন। কারণ এটি একটি পরিষেবা খাতভিত্তিক কাজ, এবং একবার সম্মতি দেওয়ার পর তা বাতিল করা পেশাগতভাবে গ্রহণযোগ্য নয়।</li>
+      </ol>
+    </div>
+  </div>
+</div>
 
 <footer class="site-footer">
   <div class="container">

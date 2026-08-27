@@ -359,6 +359,24 @@ function setupReviewForm() {
   });
 }
 
+/* ---------- 7b. terms & conditions popup (apply page) ---------- */
+function setupTermsModal() {
+  const openBtn = document.getElementById("openTerms");
+  const overlay = document.getElementById("termsOverlay");
+  if (!openBtn || !overlay) return;
+  const closeBtn = document.getElementById("closeTerms");
+
+  function open() { overlay.classList.add("open"); }
+  function close() { overlay.classList.remove("open"); }
+
+  openBtn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && overlay.classList.contains("open")) close();
+  });
+}
+
 /* ---------- 8. contact form -> WhatsApp ---------- */
 function setupContactForm() {
   const form = document.getElementById("contactForm");
@@ -384,6 +402,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupYear();
   setupAdmin();
   setupTutorForm();
+  setupTermsModal();
   setupReviewForm();
   setupContactForm();
   renderTestimonials();
