@@ -29,35 +29,77 @@
   </div>
 </header>
 
-<!-- FORM — right below the header, no scrolling needed -->
-<section class="hero" style="padding:44px 0 60px;">
-  <div class="container" style="max-width:760px;">
-    <div class="section-head" style="color:#fff; margin-bottom:30px;">
-      <p class="eyebrow" style="color:rgba(255,255,255,.55);">Apply to Teach</p>
-      <h2 style="color:#fff; font-size:clamp(1.7rem,2.8vw,2.3rem); margin-top:12px; font-weight:700;">Tutor application</h2>
-      <p style="color:rgba(255,255,255,.7); margin-top:14px;">Fill this in and submit — it opens WhatsApp with your details pre-filled, ready to send.</p>
+<!-- APPLY PAGE HERO — cinematic full-bleed 16:9 section, rebuilt from the
+     uploaded application_form.svg (deep blue gradient canvas, bold left-
+     column messaging with two accent bullets, and a lifted white/slate
+     glass "Tutor Application Form" card on the right holding the full
+     form matrix, a green document-verification notice and a dark
+     gradient submit button — colors and layout preserved 1:1 from the
+     source SVG). Fluid type via clamp(); font-family swapped to the
+     site's own DM Sans / Inter stack. Sized on the same min-height:
+     calc(100vh - header) pattern as the other cinematic sections so it
+     fits a single screen the same way. Real, working form fields are
+     wired to #tutorForm -> setupTutorForm() in script.js exactly as
+     before — only the visual shell changed. -->
+<section class="hero-apply hero-full">
+  <div class="hero-apply-grid">
+    <div class="hero-apply-text">
+      <p class="eyebrow">For Tutors</p>
+      <h1>Join as a Tutor &amp; Start Teaching<span>.</span></h1>
+      <p class="lead">Connect with students and parents in your area. Fill out your details to get verified and list your profile on our tutor marketplace.</p>
+      <div class="hero-apply-bullets">
+        <div class="hero-apply-bullet"><span class="dot" aria-hidden="true"></span>Verified Parent Leads</div>
+        <div class="hero-apply-bullet"><span class="dot" aria-hidden="true"></span>Flexible Schedules</div>
+      </div>
     </div>
-    <form class="form-card" id="tutorForm">
-      <div class="form-row">
-        <div class="field"><label>Full name</label><input type="text" name="name" required></div>
-        <div class="field"><label>Phone number</label><input type="tel" name="phone" required></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label>Area / locality</label><input type="text" name="area" placeholder="e.g. Salt Lake, Kolkata" required></div>
-        <div class="field"><label>Years of experience</label><input type="number" name="experience" min="0" required></div>
-      </div>
-      <div class="form-row">
-        <div class="field"><label>Subjects you teach</label><input type="text" name="subjects" placeholder="e.g. Maths, Physics" required></div>
-        <div class="field"><label>Grades you teach</label><input type="text" name="grades" placeholder="e.g. Class 6–10" required></div>
-      </div>
-      <div class="field"><label>Highest qualification</label><input type="text" name="qualification" placeholder="e.g. B.Sc in Physics" required></div>
-      <div class="field"><label>Anything else we should know?</label><textarea name="notes" placeholder="Optional"></textarea></div>
-      <button type="submit" class="btn btn-whatsapp btn-lg" style="width:100%; justify-content:center;">
-        <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.67 4.68 1.83 6.61L3 29l7.06-2.28a12.44 12.44 0 0 0 5.94 1.52h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3Zm0 22.6h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.22-4.19 1.35 1.37-4.08-.25-.42a10.36 10.36 0 0 1-1.6-5.5c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.35 10.35 0 0 1 3.05 7.37c0 5.75-4.69 10.43-10.5 10.43Zm5.72-7.8c-.31-.16-1.85-.91-2.14-1.02-.29-.1-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.23-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.19.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37Z"/></svg>
-        Submit via WhatsApp
-      </button>
-      <p class="form-note">By applying, you agree to be contacted by the Tutoria team for verification.</p>
-    </form>
+
+    <div class="hero-apply-card">
+      <h2 class="hero-apply-card-title">Tutor Application Form</h2>
+
+      <form class="hero-apply-form" id="tutorForm">
+        <div class="hero-apply-row">
+          <div class="hero-apply-field"><label>Full Name</label><input type="text" name="name" placeholder="Rahul Sharma" required></div>
+          <div class="hero-apply-field"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 98765 43210" required></div>
+        </div>
+        <div class="hero-apply-row">
+          <div class="hero-apply-field"><label>Highest Qualification</label><input type="text" name="qualification" placeholder="M.Sc. in Physics" required></div>
+          <div class="hero-apply-field"><label>Years of Experience</label><input type="number" name="experience" min="0" placeholder="5" required></div>
+        </div>
+        <div class="hero-apply-row">
+          <div class="hero-apply-field"><label>Subjects You Teach</label><input type="text" name="subjects" placeholder="Mathematics, Science" required></div>
+          <div class="hero-apply-field"><label>Classes / Grades Handled</label><input type="text" name="grades" placeholder="Class 8–12 (ICSE/CBSE)" required></div>
+        </div>
+        <div class="hero-apply-row">
+          <div class="hero-apply-field"><label>Preferred Area / Location</label><input type="text" name="area" placeholder="Salt Lake, Kolkata" required></div>
+          <div class="hero-apply-field"><label>Anything else to share?</label><input type="text" name="notes" placeholder="Available weekends..."></div>
+        </div>
+
+        <div class="hero-apply-verify">
+          <div class="hero-apply-verify-head">
+            <span class="hero-apply-verify-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16">
+                <circle cx="12" cy="12" r="12" fill="#25D366"/>
+                <path d="M12 8v4M12 16h.01" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <span>Document Verification Notice</span>
+          </div>
+          <p>After submitting your application, our team will coordinate with you via WhatsApp to verify your academic qualifications and government-issued IDs. Please be prepared to share your documents securely at that stage.</p>
+        </div>
+
+        <label class="hero-apply-terms">
+          <input type="checkbox" required>
+          <span class="hero-apply-check" aria-hidden="true">
+            <svg viewBox="0 0 16 16" width="11" height="11">
+              <path d="M3 8.5l3 3 7-7" stroke="#FFFFFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span>I agree to the <em>Terms &amp; Conditions</em></span>
+        </label>
+
+        <button type="submit" class="hero-apply-submit">Submit Application</button>
+      </form>
+    </div>
   </div>
 </section>
 
