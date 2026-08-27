@@ -106,50 +106,141 @@
   </div>
 </section>
 
-<!-- CONTACT DETAILS + FORM -->
-<section class="bg-paper" id="contact-form">
-  <div class="container">
-    <div class="contact-grid">
+<!-- CONTACT FORM — cinematic full-bleed section, coded inline SVG
+     rebuilt from the uploaded WHATSAPP_FORM.svg. Colors, radii,
+     shadow and gradient preserved exactly from the source; only the
+     font-family was swapped to the site's own type (--font-body),
+     and the outer section is sized on the same min-height:(100vh -
+     header) rhythm as the homepage's .faq-cinema so it reads as one
+     more full screen in the same cinematic sequence. The submit
+     button is wired to the same data-wa WhatsApp-link mechanism
+     used by every other CTA on the site (see script.js). -->
+<section class="contact-form-cinema" id="contact-form">
+  <div class="contact-form-frame">
+    <svg class="contact-form-svg" viewBox="0 0 1600 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WhatsApp contact form">
+      <defs>
+        <filter id="cf-shadow" x="-5%" y="-10%" width="110%" height="130%">
+          <feDropShadow dx="0" dy="20" stdDeviation="28" flood-color="#000000" flood-opacity="0.18" />
+        </filter>
+        <linearGradient id="cf-btn-whatsapp" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#25D366" />
+          <stop offset="100%" stop-color="#1DA851" />
+        </linearGradient>
+      </defs>
 
-      <div>
-        <div class="section-head" style="margin-bottom:30px;">
-          <p class="eyebrow">Reach Us</p>
-          <h2 style="font-size:1.5rem;">Contact details</h2>
-        </div>
-        <div class="row-list" style="border-top:1px solid var(--line);">
-          <div style="padding:18px 0; border-bottom:1px solid var(--line);">
-            <div class="eyebrow" style="color:var(--pine-600);">WhatsApp</div>
-            <a href="#" data-wa style="font-size:1rem; font-weight:600; color:var(--ink);">Chat with us instantly</a>
-          </div>
-          <div style="padding:18px 0; border-bottom:1px solid var(--line);">
-            <div class="eyebrow" style="color:var(--pine-600);">Email</div>
-            <p style="font-size:1rem; font-weight:600;">info@tutoria.in</p>
-          </div>
-          <div style="padding:18px 0; border-bottom:1px solid var(--line);">
-            <div class="eyebrow" style="color:var(--pine-600);">Service Area</div>
-            <p style="font-size:1rem; font-weight:600;">West Bengal — Kolkata and nearby districts</p>
-          </div>
-          <div style="padding:18px 0; border-bottom:1px solid var(--line);">
-            <div class="eyebrow" style="color:var(--pine-600);">Hours</div>
-            <p style="font-size:1rem; font-weight:600;">Mon – Sat, 9:00 AM – 8:00 PM</p>
-          </div>
-        </div>
-      </div>
+      <rect width="1600" height="680" fill="#228C68" />
 
-      <form class="form-card" id="contactForm">
-        <div class="form-row">
-          <div class="field"><label>Full name</label><input type="text" name="name" required></div>
-          <div class="field"><label>Phone number</label><input type="tel" name="phone" required></div>
-        </div>
-        <div class="field"><label>Subject / Grade you need help with</label><input type="text" name="subject" placeholder="e.g. Class 8 Maths" required></div>
-        <div class="field"><label>Message</label><textarea name="message" placeholder="Tell us a bit about what you're looking for"></textarea></div>
-        <button type="submit" class="btn btn-whatsapp btn-lg" style="width:100%; justify-content:center;">
-          <svg viewBox="0 0 32 32"><path fill="currentColor" d="M16.001 3C9.096 3 3.5 8.596 3.5 15.5c0 2.42.67 4.68 1.83 6.61L3 29l7.06-2.28a12.44 12.44 0 0 0 5.94 1.52h.01c6.9 0 12.5-5.6 12.5-12.5S22.9 3 16 3Zm0 22.6h-.01a10.4 10.4 0 0 1-5.31-1.46l-.38-.22-4.19 1.35 1.37-4.08-.25-.42a10.36 10.36 0 0 1-1.6-5.5c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.35 10.35 0 0 1 3.05 7.37c0 5.75-4.69 10.43-10.5 10.43Zm5.72-7.8c-.31-.16-1.85-.91-2.14-1.02-.29-.1-.5-.16-.71.16-.21.31-.81 1.02-1 1.23-.18.21-.37.23-.68.08-.31-.16-1.32-.49-2.51-1.55-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.37.47-.55.16-.19.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.71-1.71-.97-2.34-.26-.62-.52-.53-.71-.54h-.6c-.21 0-.55.08-.84.39-.29.31-1.1 1.08-1.1 2.62 0 1.55 1.13 3.05 1.29 3.26.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.66.76.24 1.44.21 1.99.13.61-.09 1.85-.76 2.11-1.49.26-.73.26-1.36.18-1.49-.08-.13-.29-.21-.6-.37Z"/></svg>
-          Send via WhatsApp
-        </button>
-        <p class="form-note">This opens WhatsApp with your message pre-filled — just hit send.</p>
-      </form>
-    </div>
+      <g transform="translate(60, 60)" filter="url(#cf-shadow)">
+        <rect width="1480" height="560" rx="28" fill="#FFFFFF" />
+
+        <g transform="translate(60, 60)">
+
+          <!-- Full name -->
+          <g transform="translate(0, 0)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="17" font-weight="700" fill="#1E293B">Full name</text>
+            <rect y="16" width="430" height="64" rx="14" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="20" y="55" style="font-family:var(--font-body)" font-size="16" fill="#94A3B8">e.g. Rahul Sharma</text>
+          </g>
+
+          <!-- Phone number -->
+          <g transform="translate(465, 0)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="17" font-weight="700" fill="#1E293B">Phone number</text>
+            <rect y="16" width="430" height="64" rx="14" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="20" y="55" style="font-family:var(--font-body)" font-size="16" fill="#94A3B8">e.g. +91 98765 43210</text>
+          </g>
+
+          <!-- Subject / Grade -->
+          <g transform="translate(930, 0)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="17" font-weight="700" fill="#1E293B">Subject / Grade you need help with</text>
+            <rect y="16" width="430" height="64" rx="14" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="20" y="55" style="font-family:var(--font-body)" font-size="16" fill="#94A3B8">e.g. Class 8 Maths</text>
+          </g>
+
+          <!-- Message -->
+          <g transform="translate(0, 130)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="17" font-weight="700" fill="#1E293B">Message</text>
+            <rect y="16" width="1360" height="180" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="20" y="55" style="font-family:var(--font-body)" font-size="16" fill="#94A3B8">Tell us a bit about what you're looking for...</text>
+            <path d="M1344 182L1352 174M1348 182L1352 178" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" />
+          </g>
+
+          <!-- Submit -->
+          <a href="#" data-wa data-wa-msg="Hi Tutoria, I'd like to get in touch." aria-label="Send via WhatsApp">
+            <g transform="translate(455, 360)" style="cursor:pointer;">
+              <rect width="450" height="64" rx="32" fill="url(#cf-btn-whatsapp)" filter="url(#cf-shadow)" />
+              <text x="225" y="38" text-anchor="middle" style="font-family:var(--font-body)" font-size="18" font-weight="700" fill="#FFFFFF">Send via WhatsApp</text>
+            </g>
+          </a>
+          <text x="680" y="456" text-anchor="middle" style="font-family:var(--font-body)" font-size="13" font-weight="500" fill="#64748B">This opens WhatsApp with your message pre-filled — just hit send.</text>
+
+        </g>
+      </g>
+    </svg>
+
+    <!-- Mobile layout: same fields/copy, stacked vertically in a
+         narrower canvas so the card fills the screen width with no
+         horizontal scrolling and no leftover empty space. -->
+    <svg class="contact-form-svg contact-form-svg-mobile" viewBox="0 0 400 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WhatsApp contact form">
+      <defs>
+        <filter id="cf-shadow-m" x="-8%" y="-10%" width="116%" height="130%">
+          <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.18" />
+        </filter>
+        <linearGradient id="cf-btn-whatsapp-m" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#25D366" />
+          <stop offset="100%" stop-color="#1DA851" />
+        </linearGradient>
+      </defs>
+
+      <rect width="400" height="640" fill="#228C68" />
+
+      <g transform="translate(20, 20)" filter="url(#cf-shadow-m)">
+        <rect width="360" height="600" rx="22" fill="#FFFFFF" />
+
+        <g transform="translate(24, 28)">
+
+          <!-- Full name -->
+          <g transform="translate(0, 0)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="14" font-weight="700" fill="#1E293B">Full name</text>
+            <rect y="14" width="312" height="52" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="16" y="45" style="font-family:var(--font-body)" font-size="14" fill="#94A3B8">e.g. Rahul Sharma</text>
+          </g>
+
+          <!-- Phone number -->
+          <g transform="translate(0, 86)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="14" font-weight="700" fill="#1E293B">Phone number</text>
+            <rect y="14" width="312" height="52" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="16" y="45" style="font-family:var(--font-body)" font-size="14" fill="#94A3B8">e.g. +91 98765 43210</text>
+          </g>
+
+          <!-- Subject / Grade -->
+          <g transform="translate(0, 172)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="14" font-weight="700" fill="#1E293B">Subject / Grade</text>
+            <text x="0" y="16" style="font-family:var(--font-body)" font-size="14" font-weight="700" fill="#1E293B">you need help with</text>
+            <rect y="30" width="312" height="52" rx="12" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="16" y="61" style="font-family:var(--font-body)" font-size="14" fill="#94A3B8">e.g. Class 8 Maths</text>
+          </g>
+
+          <!-- Message -->
+          <g transform="translate(0, 274)">
+            <text x="0" y="0" style="font-family:var(--font-body)" font-size="14" font-weight="700" fill="#1E293B">Message</text>
+            <rect y="14" width="312" height="110" rx="14" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5" />
+            <text x="16" y="34" style="font-family:var(--font-body)" font-size="14" fill="#94A3B8">Tell us a bit about what</text>
+            <text x="16" y="54" style="font-family:var(--font-body)" font-size="14" fill="#94A3B8">you're looking for...</text>
+          </g>
+
+          <!-- Submit -->
+          <a href="#" data-wa data-wa-msg="Hi Tutoria, I'd like to get in touch." aria-label="Send via WhatsApp">
+            <g transform="translate(0, 422)" style="cursor:pointer;">
+              <rect width="312" height="52" rx="26" fill="url(#cf-btn-whatsapp-m)" filter="url(#cf-shadow-m)" />
+              <text x="156" y="32" text-anchor="middle" style="font-family:var(--font-body)" font-size="16" font-weight="700" fill="#FFFFFF">Send via WhatsApp</text>
+            </g>
+          </a>
+          <text x="156" y="492" text-anchor="middle" style="font-family:var(--font-body)" font-size="11" font-weight="500" fill="#64748B">This opens WhatsApp with your message</text>
+          <text x="156" y="508" text-anchor="middle" style="font-family:var(--font-body)" font-size="11" font-weight="500" fill="#64748B">pre-filled — just hit send.</text>
+
+        </g>
+      </g>
+    </svg>
   </div>
 </section>
 

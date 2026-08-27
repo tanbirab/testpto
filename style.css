@@ -1064,12 +1064,30 @@ section{padding:88px 0;}
 .wa-float:hover{transform:scale(1.06); animation-play-state:paused;}
 .wa-float svg{width:27px; height:27px; fill:#fff;}
 
-/* -------------------- contact page layout -------------------- */
-.contact-grid{
-  display:grid; grid-template-columns:1fr 1.3fr; gap:48px; align-items:start;
+/* -------------------- contact page: cinematic SVG form section -------------------- */
+.contact-form-cinema{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:#228C68;
+  padding:clamp(48px,7vh,84px) 0;
 }
-@media (max-width:800px){
-  .contact-grid{grid-template-columns:1fr; gap:36px;}
+.contact-form-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  width:100%;
+}
+.contact-form-svg{ width:100%; height:auto; display:block; }
+.contact-form-svg-mobile{ display:none; }
+@media (max-width:1000px){
+  .contact-form-cinema{ padding:7vh 0; }
+}
+@media (max-width:640px){
+  .contact-form-cinema{ padding:8vh 0; }
+  .contact-form-frame{ padding:0 18px; }
+  .contact-form-svg{ display:none; }
+  .contact-form-svg-mobile{ display:block; }
 }
 
 /* -------------------- forms -------------------- */
