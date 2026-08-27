@@ -577,7 +577,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   margin:0 auto;
   padding:clamp(20px,3.6vh,44px) 32px;
   min-height:calc(100vh - var(--header-h));
-  max-height:calc(100vh - var(--header-h));
 }
 
 /* ---- Left: hero messaging ---- */
@@ -616,8 +615,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   border-radius:clamp(18px,1.6vw,28px);
   box-shadow:0 24px 56px rgba(0,0,0,.25);
   padding:clamp(24px,2.6vw,44px);
-  max-height:calc(100vh - var(--header-h) - clamp(40px,7.2vh,88px));
-  overflow-y:auto;
 }
 .hero-review-card-title{
   font-family:var(--font-display); font-weight:800;
@@ -690,11 +687,10 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   .hero-review{ min-height:auto; }
   .hero-review-grid{
     grid-template-columns:1fr;
-    min-height:auto; max-height:none;
+    min-height:auto;
     padding:5vh clamp(24px,6vw,48px) 6vh;
     gap:32px;
   }
-  .hero-review-card{ max-height:none; overflow-y:visible; }
 }
 @media (max-width:640px){
   .hero-review-grid{ padding:4vh 20px 5vh; gap:26px; }
