@@ -304,9 +304,9 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
    header) pattern as every other cinematic section on the site.
    ============================================================ */
 .hero-contact{
-  min-height:calc(100vh - var(--header-h));
+  min-height:min(calc(100vw * 9 / 16 - var(--header-h)), calc(100vh - var(--header-h)));
   display:flex;
-  align-items:center;
+  align-items:stretch;
   background:#22588C;
   padding:clamp(28px,4.5vh,56px) 0;
 }
@@ -317,8 +317,10 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   width:100%;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
   gap:clamp(6px,1vh,10px);
 }
+.hero-contact-top{ display:flex; flex-direction:column; }
 .hero-contact-eyebrow{
   font-family:var(--font-body); font-weight:800;
   font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
@@ -326,13 +328,13 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   margin:0 0 clamp(6px,1vh,10px);
 }
 .hero-contact-lead{
-  font-family:var(--font-display); font-weight:700;
-  font-size:clamp(1.5rem,2.9vw,2.2rem); line-height:1.3;
-  color:#FFFFFF; margin:0 0 clamp(18px,2.8vh,30px);
-  letter-spacing:-.01em;
-  max-width:26ch;
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(1.5rem,2.7vw,2.1rem); line-height:1.42;
+  color:rgba(255,255,255,.92); margin:0;
+  letter-spacing:-.005em;
+  max-width:19ch;
 }
-.hero-contact-lead strong{ font-weight:800; color:#fff; }
+.hero-contact-lead strong{ font-weight:700; color:#7FE3BD; }
 
 .hero-contact-card{
   background:linear-gradient(135deg,#FFFFFF,#F4FAF7);
@@ -384,7 +386,6 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 .hero-contact-prompt{
   display:flex; flex-direction:column; align-items:center;
   gap:clamp(10px,1.6vh,16px);
-  margin-top:clamp(18px,2.8vh,30px);
   text-align:center;
 }
 .hero-contact-prompt p{
