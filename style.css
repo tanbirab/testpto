@@ -335,7 +335,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 .hero-contact-lead{
   font-family:var(--font-body); font-weight:400;
   font-size:clamp(.95rem,1.25vw,1.1rem); line-height:1.55;
-  color:rgba(255,255,255,.9); margin:0 0 clamp(18px,2.8vh,30px);
+  color:rgba(255,255,255,.9); margin:0 0 clamp(14px,2.2vh,24px);
   max-width:56ch;
 }
 .hero-contact-lead strong{ font-weight:700; }
@@ -344,7 +344,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
   background:linear-gradient(135deg,#FFFFFF,#F4FAF7);
   border-radius:20px;
   box-shadow:0 20px 44px rgba(0,0,0,.25);
-  padding:clamp(20px,2.6vw,34px) clamp(22px,3vw,44px);
+  padding:clamp(18px,2.2vh,28px) clamp(22px,3vw,44px);
 }
 .hero-contact-card-eyebrow{
   font-family:var(--font-body); font-weight:800;
@@ -354,18 +354,26 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 }
 .hero-contact-card-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.15rem,1.8vw,1.45rem);
-  color:#0E3D2D; margin:0 0 clamp(10px,1.6vh,16px); line-height:1.25;
+  font-size:clamp(1.1rem,1.6vw,1.4rem);
+  color:#0E3D2D; margin:0 0 clamp(8px,1.2vh,14px); line-height:1.25;
 }
-.hero-contact-items{ display:flex; flex-direction:column; }
+/* 2x2 grid on laptop/desktop so the card doesn't stack into a tall
+   column — that stacked height was pushing the section past 100vh
+   on real laptop screen heights. Mobile falls back to a single
+   column in the max-width:1000px block below. */
+.hero-contact-items{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  column-gap:clamp(20px,2.6vw,36px);
+}
 .hero-contact-item{
-  display:flex; align-items:flex-start; gap:16px;
-  padding:clamp(11px,1.5vh,15px) 0;
+  display:flex; align-items:flex-start; gap:14px;
+  padding:clamp(9px,1.2vh,13px) 0;
 }
-.hero-contact-item:not(:first-child){
+.hero-contact-item:nth-child(n+3){
   border-top:1.5px solid rgba(14,61,45,.08);
 }
-.hero-contact-icon{ flex:none; width:clamp(32px,2.6vw,40px); height:clamp(32px,2.6vw,40px); }
+.hero-contact-icon{ flex:none; width:clamp(30px,2.4vw,38px); height:clamp(30px,2.4vw,38px); }
 .hero-contact-icon svg{ display:block; width:100%; height:100%; }
 .hero-contact-label{
   font-family:var(--font-body); font-weight:800;
@@ -399,10 +407,24 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 @media (max-width:1000px){
   .hero-contact{ min-height:auto; padding:6vh 0 5vh; }
   .hero-contact-title{ max-width:none; }
+  .hero-contact-items{ grid-template-columns:1fr; }
   .hero-contact-item{ gap:12px; }
+  .hero-contact-item:nth-child(n+3){ border-top:none; }
+  .hero-contact-item:not(:first-child){ border-top:1.5px solid rgba(14,61,45,.08); }
 }
 @media (max-width:640px){
   .hero-contact-item{ flex-wrap:wrap; }
+}
+/* Laptop-height safety net: on shorter viewports (typical 13"–14"
+   laptops, ~700–820px tall) trim the section's own top/bottom
+   padding a bit further so the whole hero — eyebrow, title, lead,
+   card and scroll prompt — clears one screen without scrolling. */
+@media (min-width:1001px) and (max-height:820px){
+  .hero-contact{ padding:clamp(18px,3vh,32px) 0; }
+  .hero-contact-title{ font-size:clamp(1.5rem,3vw,2.1rem); }
+  .hero-contact-lead{ margin-bottom:clamp(10px,1.6vh,18px); }
+  .hero-contact-card{ padding:clamp(14px,1.8vh,22px) clamp(22px,3vw,40px); }
+  .hero-contact-prompt{ margin-top:clamp(12px,2vh,20px); }
 }
 @media (max-width:640px){
   .hero-full-grid{
