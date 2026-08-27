@@ -370,7 +370,7 @@ function setupContactForm() {
 `New enquiry — Tutoria
 Name: ${d.name}
 Phone: ${d.phone}
-Subject/Grade: ${d.subject}
+I'm a: ${d.subject}
 Message: ${d.message || "-"}`;
     window.open(buildWaLink(msg), "_blank");
   });
