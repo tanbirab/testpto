@@ -348,8 +348,8 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
 }
 .hero-tutor-card-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.4rem,2.4vw,1.9rem);
-  color:#0E3D2D; margin:0 0 clamp(20px,3vh,32px); line-height:1.25;
+  font-size:clamp(1.15rem,1.9vw,1.5rem);
+  color:#0E3D2D; margin:0 0 clamp(10px,1.8vh,18px); line-height:1.25;
 }
 .hero-tutor-features{ display:flex; flex-direction:column; }
 .hero-tutor-feature{
