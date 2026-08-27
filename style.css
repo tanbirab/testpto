@@ -564,7 +564,7 @@ h1,h2,h3{font-family:var(--font-display); font-weight:700; letter-spacing:-.02em
    full review form). Uses the same .hero-full min-height pattern
    as the rest of the site's cinematic sections so it fits a
    laptop screen the same way; font-family matches the site's own
-   type instead of the SVG's system font stack. -->
+   type instead of the SVG's system font stack. */
 .hero-review{
   background:#22588C;
 }
