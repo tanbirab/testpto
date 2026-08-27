@@ -405,12 +405,18 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section id="testimonials" class="bg-paper">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Testimonials</p>
-      <h2>What our community is saying</h2>
+<!-- TESTIMONIALS — cinematic full-bleed section, rebuilt from the
+     uploaded testimonial_sections.svg (solid blue canvas, eyebrow
+     pill + heading, gold-topped cards with a quote badge and star
+     rating). Fluid HTML/CSS with inline <svg> icons rather than a
+     static image, so type scales via clamp() and the section never
+     clips. The card grid itself (#testiTrack) stays JS-rendered so
+     the admin panel's add/approve/remove flow keeps working. -->
+<section id="testimonials" class="testimonials-cinema">
+  <div class="testimonials-frame">
+    <div class="testimonials-header">
+      <p class="testimonials-eyebrow">Testimonials</p>
+      <h2 class="testimonials-title">What our community is saying</h2>
     </div>
     <div class="testi-track" id="testiTrack">
       <p class="testi-empty">Loading testimonials…</p>

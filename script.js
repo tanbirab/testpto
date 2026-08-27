@@ -88,6 +88,23 @@ function initials(name){
   return name.split(" ").map(w=>w[0]).slice(0,2).join("").toUpperCase();
 }
 
+/* Reusable inline-SVG bits for the testimonial card (mirrors the
+   uploaded testimonial_sections.svg: quote badge + 5-star rating). */
+const TESTI_STAR_PATH = "M6 0l1.8 3.7 4.1.6-3 2.9.7 4.1L6 9.3 2.4 11.3l.7-4.1-3-2.9 4.1-.6z";
+function testiStars(ratingStr){
+  const filled = ratingStr ? Math.max(0, Math.min(5, parseInt(ratingStr, 10) || 5)) : 5;
+  let out = "";
+  for (let i = 0; i < 5; i++){
+    out += `<svg class="testi-star${i < filled ? " is-filled" : ""}" viewBox="0 0 12 12" aria-hidden="true"><path d="${TESTI_STAR_PATH}"/></svg>`;
+  }
+  return out;
+}
+const TESTI_QUOTE_ICON = `
+  <svg class="testi-quote-icon" viewBox="0 0 40 40" aria-hidden="true">
+    <circle cx="20" cy="20" r="20" fill="#FBF4E6"/>
+    <path d="M14 24h3.5l2-4V14h-5.5v6H16l-2 4zm7 0h3.5l2-4V14h-5.5v6H23l-2 4z" fill="#F2994A"/>
+  </svg>`;
+
 async function renderTestimonials() {
   const track = document.getElementById("testiTrack");
   if (!track) return;
@@ -96,12 +113,15 @@ async function renderTestimonials() {
     track.innerHTML = '<p class="testi-empty">No testimonials yet.</p>';
     return;
   }
-  track.innerHTML = list.map(t => `
+  track.innerHTML = list.map((t, i) => `
     <div class="testi-card">
-      <div class="testi-mark">&ldquo;</div>
+      <div class="testi-card-top">
+        ${TESTI_QUOTE_ICON}
+        <div class="testi-stars">${testiStars(t.rating)}</div>
+      </div>
       <p class="testi-quote">${t.quote}</p>
       <div class="testi-foot">
-        <div class="testi-avatar">${initials(t.name)}</div>
+        <div class="testi-avatar testi-avatar--${(i % 3) + 1}">${initials(t.name)}</div>
         <div>
           <div class="testi-name">${t.name}</div>
           <div class="testi-meta">${t.meta}</div>
