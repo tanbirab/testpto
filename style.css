@@ -766,6 +766,113 @@ section{padding:88px 0;}
   .faq-cinema{ min-height:0; }
 }
 
+/* ============================================================
+   FAQ (TUTOR PAGE) — cinematic full-bleed 16:9 section
+   Rebuilt from gemini-svg__24_.svg: solid #228C68 canvas,
+   translucent white divider lines, a lifted #F4FAF7 glass card
+   for the open item, and an inline <svg> plus/minus icon that
+   mirrors the SVG's two crossing lines exactly (the vertical
+   stroke retracts to zero-height when the item opens). Fluid
+   type via clamp(), and the same min-height:(100vh - header)
+   pattern as every other cinematic section on the site, so this
+   fits a single screen exactly like the homepage's FAQ does.
+   Scoped entirely under .faq-cinema-tutor so nothing else on the
+   site is affected.
+   ============================================================ */
+.faq-cinema-tutor{
+  position:relative;
+  width:100%;
+  min-height:calc(100vh - var(--header-h));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:clamp(40px,6vw,80px) 0;
+  background:#228C68;
+  overflow:hidden;
+}
+.faq-cinema-tutor-frame{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 32px;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:clamp(28px,4.5vh,48px);
+}
+.faq-cinema-tutor-header{ max-width:640px; }
+.faq-cinema-tutor-eyebrow{
+  font-family:var(--font-body); font-weight:800;
+  font-size:clamp(.66rem,.9vw,.78rem); letter-spacing:.14em;
+  text-transform:uppercase; color:#FFFFFF; opacity:.85;
+  margin:0 0 clamp(8px,1.2vh,12px);
+}
+.faq-cinema-tutor-title{
+  font-family:var(--font-display); font-weight:800;
+  font-size:clamp(1.7rem,3.6vw,2.4rem);
+  color:#FFFFFF; margin:0; line-height:1.15;
+}
+
+.faq-cinema-tutor .faq{ max-width:none; }
+.faq-cinema-tutor .faq-item{
+  border-bottom:none;
+  border-top:1.5px solid rgba(255,255,255,.3);
+  border-radius:16px;
+  transition:background .25s ease, box-shadow .25s ease, margin .25s ease;
+}
+.faq-cinema-tutor .faq-item:first-child{ border-top:1.5px solid rgba(255,255,255,.3); }
+.faq-cinema-tutor .faq-item:last-child{ border-bottom:1.5px solid rgba(255,255,255,.3); }
+.faq-cinema-tutor .faq-item.open{
+  border-top-color:transparent;
+  background:#F4FAF7;
+  border-radius:16px;
+  box-shadow:0 10px 16px rgba(0,0,0,.18);
+  margin:6px 0;
+}
+.faq-cinema-tutor .faq-item.open + .faq-item{ border-top-color:transparent; }
+
+.faq-cinema-tutor .faq-q{
+  padding:clamp(18px,2.4vh,24px) clamp(4px,1vw,6px);
+  font-family:var(--font-body); font-weight:700;
+  font-size:clamp(1rem,1.5vw,1.25rem); color:#FFFFFF;
+  transition:color .2s ease, padding .2s ease;
+}
+.faq-cinema-tutor .faq-item.open .faq-q{
+  color:#0E3D2D;
+  font-weight:800;
+  padding-left:clamp(18px,2vw,26px);
+  padding-right:clamp(18px,2vw,26px);
+}
+
+/* Inline SVG plus/minus icon — a literal <svg> (two crossing
+   lines), matching the reference SVG's icon glyph exactly rather
+   than a CSS-drawn pseudo-element. The vertical stroke scales to
+   zero when the item is open, leaving the horizontal "minus". */
+.faq-cinema-tutor .faq-q .plus{
+  flex:none; width:20px; height:20px;
+  color:#FFFFFF;
+  transition:color .2s ease;
+}
+.faq-cinema-tutor .faq-q .plus svg{ display:block; width:100%; height:100%; overflow:visible; }
+.faq-cinema-tutor .faq-q .plus .icon-v{
+  transform-origin:center;
+  transition:transform .2s ease;
+}
+.faq-cinema-tutor .faq-item.open .faq-q .plus{ color:#0E3D2D; transform:none; }
+.faq-cinema-tutor .faq-item.open .faq-q .plus .icon-v{ transform:scaleY(0); }
+
+.faq-cinema-tutor .faq-a{ max-height:0; }
+.faq-cinema-tutor .faq-item.open .faq-a{ max-height:600px; }
+.faq-cinema-tutor .faq-a p{
+  padding:0 clamp(18px,2vw,26px) clamp(20px,2.4vh,28px);
+  font-family:var(--font-body);
+  font-size:clamp(.88rem,1.05vw,1rem); line-height:1.65;
+  color:#1E4D3C; max-width:900px;
+}
+
+@media (max-width:640px){
+  .faq-cinema-tutor{ min-height:0; }
+}
+
 /* -------------------- CTA band -------------------- */
 .cta-band{
   background:var(--pine-950); color:#fff;
