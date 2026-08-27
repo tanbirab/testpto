@@ -1740,8 +1740,9 @@ section{padding:88px 0;}
 
 /* ============================================================
    APPLY PAGE HERO — cinematic full-bleed 16:9 section, rebuilt
-   from the uploaded application_form.svg: deep blue gradient
-   canvas, bold left-column hero messaging with two accent
+   from the uploaded application_form.svg: same solid header-blue
+   canvas as the site header (seamless, no gradient seam, no
+   border), bold left-column hero messaging with two accent
    bullets, and a lifted white/slate glass "Tutor Application
    Form" card on the right holding the full form matrix, a green
    document-verification notice, a terms checkbox and a dark
@@ -1749,21 +1750,22 @@ section{padding:88px 0;}
    the source SVG; typography swapped to the site's own DM Sans /
    Inter stack, sized fluidly with clamp(). Uses the same
    min-height: calc(100vh - header) pattern as the other cinematic
-   sections (hero-tutor, hero-review) so it fits a single screen
-   the same way — the form itself scrolls internally on short
-   viewports rather than pushing the section taller than 100vh.
+   sections (hero-tutor, hero-review) — every field, gap and
+   padding is sized in vh-based clamp() steps so the ENTIRE form
+   fits inside that single screen with no internal scrolling,
+   the same "cinematic fit" as the rest of the site.
    ============================================================ */
 .hero-apply{
-  background:linear-gradient(135deg,#1A3A5C 0%,#22588C 50%,#153654 100%);
+  background:var(--header-bg); /* flat — identical to .site-header, no seam */
 }
 .hero-apply-grid{
   display:grid;
   grid-template-columns:minmax(280px,1fr) minmax(340px,54%);
   align-items:center;
-  gap:clamp(24px,4vw,64px);
+  gap:clamp(20px,4vw,64px);
   max-width:var(--container);
   margin:0 auto;
-  padding:clamp(14px,2.4vh,28px) 32px;
+  padding:clamp(10px,1.8vh,22px) 32px;
   min-height:calc(100vh - var(--header-h));
   max-height:calc(100vh - var(--header-h));
 }
@@ -1773,49 +1775,47 @@ section{padding:88px 0;}
 .hero-apply-text .eyebrow{ color:rgba(255,255,255,.8); }
 .hero-apply-text h1{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.8rem,3.1vw,2.9rem); line-height:1.12;
+  font-size:clamp(1.6rem,3.1vw,2.9rem); line-height:1.12;
   letter-spacing:-.02em; color:#FFFFFF;
-  margin:clamp(10px,1.6vh,16px) 0 clamp(12px,2vh,18px);
+  margin:clamp(8px,1.4vh,16px) 0 clamp(10px,1.6vh,18px);
 }
 .hero-apply-text h1 span{ color:#38BDF8; }
 .hero-apply-text .lead{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.88rem,1vw,1.02rem); line-height:1.6;
+  font-size:clamp(.84rem,1vw,1.02rem); line-height:1.55;
   color:#E2E8F0; opacity:.9; max-width:42ch;
-  margin:0 0 clamp(18px,2.8vh,30px);
+  margin:0 0 clamp(14px,2.2vh,30px);
 }
 .hero-apply-bullets{
-  display:flex; flex-direction:column; gap:clamp(8px,1.2vh,14px);
+  display:flex; flex-direction:column; gap:clamp(6px,1vh,14px);
 }
 .hero-apply-bullet{
   display:flex; align-items:center; gap:10px;
   font-family:var(--font-body); font-weight:600;
-  font-size:clamp(.86rem,.98vw,1rem); color:#FFFFFF;
+  font-size:clamp(.82rem,.98vw,1rem); color:#FFFFFF;
 }
 .hero-apply-bullet .dot{
   flex:none; width:8px; height:8px; border-radius:50%; background:#38BDF8;
 }
 
-/* ---- Right: glass form card ---- */
+/* ---- Right: glass form card (no gradient border/seam of its own —
+   just a lifted white surface, matching the source SVG's card) ---- */
 .hero-apply-card{
   background:linear-gradient(135deg, rgba(255,255,255,.98), rgba(248,250,252,.95));
   border:1.5px solid rgba(255,255,255,.8);
-  border-radius:clamp(16px,1.6vw,20px);
+  border-radius:clamp(14px,1.6vw,20px);
   box-shadow:0 20px 48px rgba(15,23,42,.32);
-  padding:clamp(16px,2vw,28px) clamp(20px,2.6vw,36px);
-  max-height:calc(100vh - var(--header-h) - clamp(28px,4.8vh,56px));
+  padding:clamp(12px,1.8vh,22px) clamp(18px,2.6vw,34px);
   display:flex;
   flex-direction:column;
-  min-height:0;
 }
 .hero-apply-card-title{
   font-family:var(--font-display); font-weight:800;
-  font-size:clamp(1.05rem,1.5vw,1.35rem); color:#0F172A;
-  margin:0 0 clamp(10px,1.6vh,16px); flex:none;
+  font-size:clamp(1rem,1.5vw,1.3rem); color:#0F172A;
+  margin:0 0 clamp(6px,1.2vh,14px); flex:none;
 }
 .hero-apply-form{
-  display:flex; flex-direction:column; gap:clamp(8px,1.1vh,12px);
-  overflow-y:auto; padding-right:4px; min-height:0; flex:1;
+  display:flex; flex-direction:column; gap:clamp(6px,.9vh,10px);
 }
 .hero-apply-row{
   display:grid; grid-template-columns:1fr 1fr;
@@ -1823,13 +1823,13 @@ section{padding:88px 0;}
 }
 .hero-apply-field label{
   display:block; font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.7rem,.78vw,.78rem); color:#1E293B; margin-bottom:5px;
+  font-size:clamp(.66rem,.78vw,.76rem); color:#1E293B; margin-bottom:4px;
 }
 .hero-apply-field input{
   width:100%; font-family:var(--font-body);
-  font-size:clamp(.78rem,.86vw,.86rem); color:#334155;
+  font-size:clamp(.74rem,.86vw,.85rem); color:#334155;
   background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:8px;
-  padding:0 12px; height:clamp(34px,4vh,42px);
+  padding:0 12px; height:clamp(28px,3.4vh,40px);
   transition:border-color .15s, box-shadow .15s;
 }
 .hero-apply-field input::placeholder{ color:#94A3B8; }
@@ -1839,30 +1839,30 @@ section{padding:88px 0;}
 
 .hero-apply-verify{
   background:#F0FDF4; border:1.5px solid #BBF7D0; border-radius:10px;
-  padding:clamp(10px,1.4vh,14px) clamp(12px,1.6vw,18px); margin-top:2px;
+  padding:clamp(7px,1.1vh,12px) clamp(12px,1.6vw,18px); margin-top:1px;
 }
 .hero-apply-verify-head{
   display:flex; align-items:center; gap:8px;
   font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.78rem,.86vw,.86rem); color:#166534; margin-bottom:4px;
+  font-size:clamp(.72rem,.86vw,.84rem); color:#166534; margin-bottom:3px;
 }
-.hero-apply-verify-icon{ flex:none; width:16px; height:16px; display:flex; }
+.hero-apply-verify-icon{ flex:none; width:15px; height:15px; display:flex; }
 .hero-apply-verify-icon svg{ display:block; width:100%; height:100%; }
 .hero-apply-verify p{
   font-family:var(--font-body); font-weight:400;
-  font-size:clamp(.68rem,.76vw,.76rem); line-height:1.5; color:#15803D; margin:0;
+  font-size:clamp(.62rem,.76vw,.73rem); line-height:1.42; color:#15803D; margin:0;
 }
 
 .hero-apply-terms{
   display:flex; align-items:center; gap:10px; cursor:pointer;
-  font-family:var(--font-body); font-size:clamp(.76rem,.84vw,.84rem);
-  color:#334155; margin-top:2px; position:relative;
+  font-family:var(--font-body); font-size:clamp(.72rem,.84vw,.82rem);
+  color:#334155; margin-top:1px; position:relative;
 }
 .hero-apply-terms input{
   position:absolute; opacity:0; width:18px; height:18px; margin:0; cursor:pointer;
 }
 .hero-apply-check{
-  flex:none; width:18px; height:18px; border-radius:4px;
+  flex:none; width:17px; height:17px; border-radius:4px;
   background:#0F172A; display:flex; align-items:center; justify-content:center;
 }
 .hero-apply-terms em{
@@ -1870,11 +1870,11 @@ section{padding:88px 0;}
 }
 
 .hero-apply-submit{
-  margin-top:2px; width:100%; height:clamp(38px,4.6vh,48px);
+  margin-top:1px; width:100%; height:clamp(32px,4vh,46px);
   border-radius:10px; border:none; cursor:pointer; flex:none;
   background:linear-gradient(90deg,#1E293B,#0F172A);
   color:#FFFFFF; font-family:var(--font-body); font-weight:700;
-  font-size:clamp(.84rem,.92vw,.94rem); letter-spacing:.02em;
+  font-size:clamp(.8rem,.92vw,.92rem); letter-spacing:.02em;
   box-shadow:0 10px 22px rgba(15,23,42,.28);
   transition:transform .15s ease, box-shadow .15s ease;
 }
@@ -1889,16 +1889,29 @@ section{padding:88px 0;}
     gap:32px;
   }
   .hero-apply-text{ order:1; }
-  .hero-apply-card{ order:2; max-height:none; }
-  .hero-apply-form{ overflow-y:visible; }
+  .hero-apply-card{ order:2; }
 }
 @media (max-width:640px){
   .hero-apply-grid{ padding:4vh 20px 5vh; gap:26px; }
   .hero-apply-row{ grid-template-columns:1fr; }
 }
+/* Laptop-height safety net — same pattern as .hero-contact: tighten
+   spacing (never hide fields) so the whole card clears one screen
+   without scrolling, down to common laptop viewport heights. */
 @media (min-width:1001px) and (max-height:820px){
-  .hero-apply-grid{ padding:clamp(10px,1.8vh,20px) 32px; }
-  .hero-apply-text h1{ margin:clamp(6px,1vh,10px) 0 clamp(8px,1.4vh,12px); }
-  .hero-apply-text .lead{ margin-bottom:clamp(12px,2vh,20px); }
-  .hero-apply-card{ padding:clamp(12px,1.6vh,20px) clamp(18px,2.4vw,32px); }
+  .hero-apply-grid{ padding:clamp(6px,1.2vh,14px) 32px; gap:clamp(18px,3vw,44px); }
+  .hero-apply-text h1{ margin:clamp(4px,.8vh,8px) 0 clamp(6px,1vh,10px); font-size:clamp(1.4rem,2.8vw,2.4rem); }
+  .hero-apply-text .lead{ margin-bottom:clamp(10px,1.6vh,18px); }
+  .hero-apply-bullets{ gap:clamp(4px,.7vh,8px); }
+  .hero-apply-card{ padding:clamp(8px,1.2vh,16px) clamp(16px,2.2vw,28px); }
+  .hero-apply-card-title{ margin-bottom:clamp(4px,.8vh,8px); }
+  .hero-apply-form{ gap:clamp(4px,.6vh,7px); }
+  .hero-apply-field input{ height:clamp(26px,2.9vh,34px); }
+}
+@media (min-width:1001px) and (max-height:700px){
+  .hero-apply-text .lead{ display:none; }
+  .hero-apply-text h1{ font-size:clamp(1.3rem,2.6vw,2rem); margin-bottom:clamp(6px,1vh,10px); }
+  .hero-apply-verify p{ font-size:clamp(.58rem,.7vw,.68rem); }
+  .hero-apply-field input{ height:clamp(24px,2.6vh,30px); }
+  .hero-apply-form{ gap:clamp(3px,.5vh,5px); }
 }
