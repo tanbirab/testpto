@@ -1,0 +1,6 @@
+{
+  "name": "Tutoria",
+  "description": "Verified home tutors for KG to Class 12 across West Bengal — CBSE, ICSE, WB Board.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
