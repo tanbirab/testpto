@@ -5,18 +5,19 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    // '/' works for Cloudflare Pages, a custom domain, or a GitHub Pages
+    // user/org site (username.github.io). If you ever deploy this as a
+    // GitHub Pages *project* site (username.github.io/repo-name), change
+    // this to '/repo-name/' instead.
+    base: '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
       },
     },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    build: {
+      outDir: 'dist',
     },
   };
 });
